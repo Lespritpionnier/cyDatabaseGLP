@@ -1,5 +1,5 @@
 package dataStructures;
 
-public class Boole extends Column {
+public class DataBoole extends Column {
     private boolean data;
 }

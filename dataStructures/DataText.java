@@ -1,6 +1,6 @@
 package dataStructures;
 
-public class Text extends Column implements Data {
+public class DataText extends Column implements Data {
     private String data;
 
     @Override
