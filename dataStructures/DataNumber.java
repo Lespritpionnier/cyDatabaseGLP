@@ -1,7 +1,7 @@
 package dataStructures;
 
-public class Date extends Column implements Data {
-    private String data;
+public class DataNumber extends Column implements Data {
+    private double data;
 
     @Override
     public void checkTypeRight() throws TypeWrongException {
@@ -12,5 +12,4 @@ public class Date extends Column implements Data {
     public void modifyData(Data item) throws TypeWrongException {
 
     }
-
 }
