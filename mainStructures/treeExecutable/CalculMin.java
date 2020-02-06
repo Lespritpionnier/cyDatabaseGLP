@@ -1,4 +1,4 @@
-package dataStructures.execution;
+package mainStructures.treeExecutable;
 
 public class CalculMin extends Calcul {
 

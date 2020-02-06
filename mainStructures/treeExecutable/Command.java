@@ -1,8 +1,8 @@
-package dataStructures.execution;
-
+package mainStructures.treeExecutable;
+import mainStructures.Table;
 
 public abstract class Command implements Execution{
-	private Table table; 
+	private Table table;
 	
 	public Execution getLeftOperation() {
 		return null;

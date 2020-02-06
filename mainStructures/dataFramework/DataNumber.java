@@ -1,4 +1,4 @@
-package dataFramework.framework;
+package mainStructures.dataFramework;
 
 public class DataNumber extends Column implements Data {
     private double data;

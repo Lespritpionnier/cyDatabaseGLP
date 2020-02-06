@@ -1,4 +1,4 @@
-package dataStructures.framework;
+package mainStructures.dataFramework;
 
 public class DataText extends Column implements Data {
     private String data;

@@ -1,4 +1,4 @@
-package dataStructures.framework;
+package mainStructures.dataFramework;
 
 public class ConditionSpecific {
     private String condition;

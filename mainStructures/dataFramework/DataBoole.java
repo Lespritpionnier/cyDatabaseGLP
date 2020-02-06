@@ -1,4 +1,4 @@
-package dataStructures.framework;
+package mainStructures.dataFramework;
 
 public class DataBoole extends Column implements Data {
     private boolean data;

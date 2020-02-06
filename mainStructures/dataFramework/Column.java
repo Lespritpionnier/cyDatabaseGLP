@@ -1,4 +1,4 @@
-package dataStructures.framework;
+package mainStructures.dataFramework;
 
 public abstract class Column {
     private String name;
