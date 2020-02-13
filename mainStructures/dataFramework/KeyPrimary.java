@@ -1,4 +1,4 @@
 package mainStructures.dataFramework;
 
-public class KeyPrimary extends Column {
+public class KeyPrimary extends Item_row {
 }

@@ -1,15 +1,15 @@
 package mainStructures.dataFramework;
 
-public class DataBoole extends Column implements Data {
+public class DataBoole extends Item_row implements DataArchetype {
     private boolean data;
 
     @Override
-    public void checkTypeCorrect() throws TypeWrongException {
+    public void checkTypeCorrect() throws WrongDataTypeException {
 
     }
 
     @Override
-    public void modifyData(Data item) throws TypeWrongException {
+    public void modifyData(DataArchetype item) throws WrongDataTypeException {
 
     }
 }

@@ -1,16 +1,16 @@
 package mainStructures.dataFramework;
 
-public class DataNumber extends Column implements Data {
+public class DataNumber extends Item_row implements DataArchetype {
     private double data;
 
 
     @Override
-    public void checkTypeCorrect() throws TypeWrongException {
+    public void checkTypeCorrect() throws WrongDataTypeException {
 
     }
 
     @Override
-    public void modifyData(Data item) throws TypeWrongException {
+    public void modifyData(DataArchetype item) throws WrongDataTypeException {
 
     }
 }
