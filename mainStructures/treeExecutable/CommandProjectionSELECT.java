@@ -4,14 +4,14 @@ import mainStructures.dataFramework.DataArchetype;
 import mainStructures.dataFramework.Item_row;
 
 public class CommandProjectionSELECT extends Command{
-    private boolean distinct = false;
+    private boolean ifDISTINCT = false;
     //QUESTION: if tab[] will be better
 
 
 
 
-    public void setDistinct(boolean distinct) {
-        this.distinct = distinct;
+    public void setDistinct(boolean ifDISTINCT) {
+        this.ifDISTINCT = ifDISTINCT;
     }
 
     public int getCOUNT (String columnName, Table_database table){
