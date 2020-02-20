@@ -1,11 +1,13 @@
 package mainStructures.treeExecutable;
 
-import mainStructures.dataFramework.Item_row;
-
-public class CommandJointJOIN extends Command {
+public class CommandJointJOIN extends CommandArchetype {
     private String choiceON;
 
-
+    /**
+     * We only need the name of the column be chosen
+     *             but not the syntax with "="
+     * @param choiceON
+     */
 
     public void setChoice (String choiceON){
         this.choiceON = choiceON;

@@ -1,15 +1,21 @@
 package mainStructures.dataFramework;
 
-public class DataText extends Item_row implements DataArchetype {
+public class DataText extends Item_row{
     private String data;
 
 
     @Override
-    public void checkTypeCorrect() throws WrongDataTypeException {
-
+    public boolean checkTypeCorrect(DataArchetype item) {
+        //TODO
     }
 
     @Override
-    public void modifyData(DataArchetype item) throws WrongDataTypeException {
+    public void setData(DataArchetype item){
+        //TODO
+    }
+
+    @Override
+    public boolean equals(DataArchetype item)
+        //TODO
     }
 }

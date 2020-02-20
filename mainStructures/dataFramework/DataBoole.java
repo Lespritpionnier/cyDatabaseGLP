@@ -1,15 +1,26 @@
 package mainStructures.dataFramework;
 
-public class DataBoole extends Item_row implements DataArchetype {
+public class DataBoole extends Item_row{
     private boolean data;
 
     @Override
-    public void checkTypeCorrect() throws WrongDataTypeException {
+    public boolean checkTypeCorrect(DataArchetype item){
 
     }
 
     @Override
-    public void modifyData(DataArchetype item) throws WrongDataTypeException {
-
+    public void setData(DataArchetype item){
+        try(checkTypeCorrect()){
+            //TODO
+        }catch (WrongDataTypeException){
+            //TODO
+        }
     }
+
+    @Override
+    public boolean equals(DataArchetype item) {
+        //TODO
+    }
+
+
 }

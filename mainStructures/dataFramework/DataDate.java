@@ -1,18 +1,26 @@
 package mainStructures.dataFramework;
 
-public class DataDate extends Item_row implements DataArchetype {
-    private String data;
+import java.util.Date;
 
+public class DataDate extends Item_row{
+    private Date data;
+    /**
+     * Please notice that it use the type Date in java.util
+     */
 
 
     @Override
-    public void checkTypeCorrect() throws WrongDataTypeException {
-
+    public boolean checkTypeCorrect(DataArchetype item) {
+        //TODO
     }
 
     @Override
-    public void modifyData(DataArchetype item) throws WrongDataTypeException {
-
+    public void setData(DataArchetype item){
+        //TODO
     }
 
+    @Override
+    public boolean equals(DataArchetype item) {
+        //TODO
+    }
 }

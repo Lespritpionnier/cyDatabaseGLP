@@ -1,12 +1,20 @@
 package mainStructures.treeExecutable;
 
 import mainStructures.dataFramework.DataArchetype;
-import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.Table_database;
 
-public class CommandProjectionSELECT extends Command{
+import java.util.ArrayList;
+
+public class CommandProjectionSELECT extends CommandArchetype {
     private boolean ifDISTINCT = false;
-    //QUESTION: if tab[] will be better
+    private ArrayList<String> dataWanted = new ArrayList<String>();
 
+    /**
+     * Those METHODS below are made before, maybe WRONG or MOUCHE
+     * DONT FORGET the situation of "SUM, AVG, MIN, MAX, COUNT"
+     *                              (Only one syntax to stock)
+     * @param ifDISTINCT
+     */
 
 
 
