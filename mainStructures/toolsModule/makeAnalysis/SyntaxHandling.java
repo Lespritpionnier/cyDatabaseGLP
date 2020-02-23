@@ -12,12 +12,21 @@ public class SyntaxHandling {
 
 
     /**
+     * Use keywords to decider which loop to go in.
+     * LIKE: if CREAT is in the Syntax / if SELECT is in the Syntax
+     *
+     * RULES: Only AND allowed space between the word.
+     *
+     *
+     *
      *   1SELECT
      *  2FROM
      * 3JOIN
      *
      * 4WHERE
-     *  5ORDERBY (ORDERBY | ORDER then BY
+     *  5ORDERBY (ORDERBY | ORDER then BY)
+     *
+     *
      */
 
 

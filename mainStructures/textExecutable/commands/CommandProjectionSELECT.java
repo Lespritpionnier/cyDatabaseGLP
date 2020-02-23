@@ -1,15 +1,15 @@
 package mainStructures.textExecutable.commands;
 
-import mainStructures.dataFramework.dataTypes.DataArchetype;
+import mainStructures.dataFramework.dataDetails.DataArchetype;
 import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.ExecutionTree;
 
 import java.util.ArrayList;
 
 public class CommandProjectionSELECT implements ExecutionTree {
-    private String orderBY;
+    private String orderBY; //Name of the column.
     private boolean ifDISTINCT = false;
-    private ArrayList<String> dataWanted = new ArrayList<String>();
+    private ArrayList<String> dataWanted = new ArrayList<>();
 
     /**
      * Those METHODS below are made before, maybe WRONG or MOUCHE

@@ -1,9 +1,9 @@
-package mainStructures.dataFramework.dataTypes;
+package mainStructures.dataFramework.dataDetails;
 
 import mainStructures.dataFramework.Item_row;
 
 public class DataNumber extends Item_row {
-    private double data;
+    private Double data;
 
 
 }

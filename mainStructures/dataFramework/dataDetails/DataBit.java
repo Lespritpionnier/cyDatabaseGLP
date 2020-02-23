@@ -1,7 +1,6 @@
-package mainStructures.dataFramework.dataTypes;
+package mainStructures.dataFramework.dataDetails;
 
 import mainStructures.dataFramework.Item_row;
-import mainStructures.dataFramework.dataTypes.DataArchetype;
 import mainStructures.dataFramework.exceptions.WrongDataTypeException;
 
 public class DataBit extends Item_row {
@@ -9,7 +8,7 @@ public class DataBit extends Item_row {
 
     @Override
     public boolean checkTypeCorrect(DataArchetype item){
-
+        //TODO
     }
 
     @Override

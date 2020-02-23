@@ -1,4 +1,4 @@
-package mainStructures.dataFramework.dataTypes;
+package mainStructures.dataFramework.dataDetails;
 
 public class KeyForeign extends KeyPrimary {
     //?
