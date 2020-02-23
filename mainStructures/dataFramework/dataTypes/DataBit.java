@@ -1,6 +1,10 @@
-package mainStructures.dataFramework;
+package mainStructures.dataFramework.dataTypes;
 
-public class DataBoole extends Item_row{
+import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.dataTypes.DataArchetype;
+import mainStructures.dataFramework.exceptions.WrongDataTypeException;
+
+public class DataBit extends Item_row {
     private boolean data;
 
     @Override

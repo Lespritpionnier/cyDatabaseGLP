@@ -1,6 +1,4 @@
-package mainStructures.makeAnalysis;
-
-import mainStructures.treeExecutable.*;
+package mainStructures.toolsModule.makeAnalysis;
 
 import java.util.StringTokenizer;
 
@@ -14,14 +12,15 @@ public class SyntaxHandling {
 
 
     /**
-     *  1SELECT
-     * 2FROM
-     *3JOIN
+     *   1SELECT
+     *  2FROM
+     * 3JOIN
+     *
      * 4WHERE
-     *  5ORDERBY
+     *  5ORDERBY (ORDERBY | ORDER then BY
      */
 
 
 
-    // Il va peut-etre utiliser/creer les objet de treeExecutable
+    // Il va peut-etre utiliser/creer les objet de textExecutable
 }

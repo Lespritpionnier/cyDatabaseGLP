@@ -1,10 +1,11 @@
 package mainStructures.dataFramework;
 
-import mainStructures.treeExecutable.ExecutionTree;
+import mainStructures.dataFramework.dataTypes.KeyPrimary;
+import mainStructures.textExecutable.ExecutionTree;
 
 import java.util.ArrayList;
 
-public class Table_database implements ExecutionTree {
+public class Table_database extends TableArchetype implements ExecutionTree {
     private String name;
     private KeyPrimary keyCurrent;
     private ArrayList<Row_table> rows = new ArrayList<Row_table>();

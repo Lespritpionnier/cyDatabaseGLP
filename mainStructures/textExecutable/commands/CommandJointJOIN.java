@@ -1,6 +1,9 @@
-package mainStructures.treeExecutable;
+package mainStructures.textExecutable.commands;
 
-public class CommandJointJOIN extends CommandArchetype {
+import mainStructures.textExecutable.ExecutionTree;
+
+public class CommandJointJOIN implements ExecutionTree {
+
     private String choiceON;
 
     /**

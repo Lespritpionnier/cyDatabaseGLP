@@ -1,11 +1,13 @@
-package mainStructures.treeExecutable;
+package mainStructures.textExecutable.commands;
 
-import mainStructures.dataFramework.DataArchetype;
+import mainStructures.dataFramework.dataTypes.DataArchetype;
 import mainStructures.dataFramework.Table_database;
+import mainStructures.textExecutable.ExecutionTree;
 
 import java.util.ArrayList;
 
-public class CommandProjectionSELECT extends CommandArchetype {
+public class CommandProjectionSELECT implements ExecutionTree {
+    private String orderBY;
     private boolean ifDISTINCT = false;
     private ArrayList<String> dataWanted = new ArrayList<String>();
 

@@ -1,10 +1,10 @@
 package mainStructures.dataFramework;
 
 
-import java.util.HashMap;
-import java.util.Hashtable;
+import mainStructures.dataFramework.dataTypes.ConditionRestricted;
+import mainStructures.dataFramework.dataTypes.DataArchetype;
 
-public abstract class Item_row implements DataArchetype{
+public abstract class Item_row implements DataArchetype {
     /**
      * ATTENTION: Use AddData() with checkConstraint()!
      */

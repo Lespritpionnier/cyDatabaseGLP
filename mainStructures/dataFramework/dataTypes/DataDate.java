@@ -1,8 +1,11 @@
-package mainStructures.dataFramework;
+package mainStructures.dataFramework.dataTypes;
+
+import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.dataTypes.DataArchetype;
 
 import java.util.Date;
 
-public class DataDate extends Item_row{
+public class DataDate extends Item_row {
     private Date data;
     /**
      * Please notice that it use the type Date in java.util

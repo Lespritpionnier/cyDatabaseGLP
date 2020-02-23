@@ -1,4 +1,4 @@
-package mainStructures.dataFramework;
+package mainStructures.dataFramework.dataTypes;
 
 public class ConditionRestricted {
     private String constraint;

@@ -1,4 +1,4 @@
-package mainStructures;
+package mainStructures.dataFramework;
 
 import mainStructures.dataFramework.Table_database;
 

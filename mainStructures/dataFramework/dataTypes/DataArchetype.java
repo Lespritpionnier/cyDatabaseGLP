@@ -1,4 +1,6 @@
-package mainStructures.dataFramework;
+package mainStructures.dataFramework.dataTypes;
+
+import mainStructures.dataFramework.exceptions.WrongDataTypeException;
 
 public interface DataArchetype {
     /**

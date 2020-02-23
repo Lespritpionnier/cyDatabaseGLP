@@ -1,6 +1,9 @@
-package mainStructures.dataFramework;
+package mainStructures.dataFramework.dataTypes;
 
-public class DataText extends Item_row{
+import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.dataTypes.DataArchetype;
+
+public class DataText extends Item_row {
     private String data;
 
 
