@@ -24,6 +24,24 @@ public class CommandProjectionSELECT implements ExecutionTree {
         this.ifDISTINCT = ifDISTINCT;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public int getCOUNT (String columnName, Table_database table){
         int count = 0;
         //TO DO
