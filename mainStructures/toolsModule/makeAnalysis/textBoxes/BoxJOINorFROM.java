@@ -1,4 +1,4 @@
 package mainStructures.toolsModule.makeAnalysis.textBoxes;
 
-public class BoxFROMJOIN {
+public class BoxJOINorFROM {
 }

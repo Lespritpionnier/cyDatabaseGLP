@@ -3,6 +3,7 @@ package mainStructures.textExecutable.commands;
 import mainStructures.dataFramework.dataDetails.DataArchetype;
 import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.ExecutionTree;
+import mainStructures.toolsModule.pairVisitor.TreeVisitor;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,6 @@ public class CommandProjectionSELECT implements ExecutionTree {
      * @param ifDISTINCT
      */
 
-
-
     public void setDistinct(boolean ifDISTINCT) {
         this.ifDISTINCT = ifDISTINCT;
     }
@@ -33,15 +32,7 @@ public class CommandProjectionSELECT implements ExecutionTree {
 
 
 
-
-
-
-
-
-
-
-
-
+/*
     public int getCOUNT (String columnName, Table_database table){
         int count = 0;
         //TO DO
@@ -63,5 +54,21 @@ public class CommandProjectionSELECT implements ExecutionTree {
     }
     public DataArchetype getMIN (String columnName, Table_database table){
         //Need a confirmation of the returning type (ALL ABOVE)
+    }
+*/
+
+    @Override
+    public ExecutionTree getLeft() {
+        return null;
+    }
+
+    @Override
+    public ExecutionTree getRight() {
+        return null;
+    }
+
+    @Override
+    public <T> T accept(TreeVisitor<T> visitor) {
+        return null;
     }
 }

@@ -1,5 +1,7 @@
 package mainStructures.textExecutable;
 
 public class TreeBuilder {
-    //Bon courage!
+    private ExecutionTree root;
+
+    public void makeTree(ExecutionTree node){}
 }
