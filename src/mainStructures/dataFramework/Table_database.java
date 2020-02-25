@@ -10,7 +10,6 @@ public class Table_database extends TableArchetype implements ExecutionTree {
     private ArrayList<Row_table> rows = new ArrayList<>();
     private ArrayList<String> columns = new ArrayList<>();
 
-    public Table_database(String name) { this.name = name; }
 
     public void addRow(){
         //TODO

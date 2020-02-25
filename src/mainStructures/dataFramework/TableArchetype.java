@@ -7,9 +7,13 @@ public abstract class TableArchetype {
     protected String name;
     private int dimColumns;
     private int dimRows;
+    private ExecutionTree left;
+    private ExecutionTree right;
 
     public TableArchetype(String name) {
         this.name = name;
+        left = null;
+        right = null;
     }
 
     public String getName() {
