@@ -1,4 +1,4 @@
-/*/*package testDebugging;
+/*/*package testDebug;
 
 public class TestArrayCopy {
     public static void main(String[] args) {
