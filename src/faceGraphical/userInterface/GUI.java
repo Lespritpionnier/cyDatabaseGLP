@@ -12,18 +12,10 @@ import mainStructures.textExecutable.TreeBuilder;
 
 
 public class GUI extends JFrame {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private TreePanel treePanel;
 
-	/**
-	 * To create a graphical tree frame, we need to specify the input tree text file.
-	 * 
-	 * @param input the name of input file with its path
-	 */
 	public GUI(ArrayList<String> input) {
 		super("Graphical Tree Demo");
 

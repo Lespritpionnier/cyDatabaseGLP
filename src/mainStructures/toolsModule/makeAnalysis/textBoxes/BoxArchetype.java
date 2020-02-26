@@ -5,13 +5,6 @@ import mainStructures.textExecutable.TreeBuilder;
 
 import java.util.ArrayList;
 
-public abstract class BoxArchetype {
-    private ArrayList<String> textAllocated = new ArrayList<>();
-
-
-    public ExecutionTree makeNode(ExecutionTree node){
-        return node;
-    }
-
-
+public interface BoxArchetype {
+    ExecutionTree makeNode();
 }

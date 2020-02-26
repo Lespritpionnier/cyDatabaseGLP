@@ -8,7 +8,6 @@ import mainStructures.textExecutable.commands.CommandArchetype;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
 
 
-
 public class TreeBuilder {
     private ExecutionTree root;
     private ArrayList<String> stocking= new ArrayList<String>();
@@ -54,8 +53,6 @@ public class TreeBuilder {
     
     public ExecutionTree buildTree() {
 		Stack<ExecutionTree> stack = new Stack<ExecutionTree>();
-
-		
 		String constantValue = "";
 		String variableName = "";
 
