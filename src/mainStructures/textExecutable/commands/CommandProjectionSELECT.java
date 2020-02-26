@@ -7,10 +7,10 @@ import mainStructures.toolsModule.pairVisitor.TreeVisitor;
 
 import java.util.ArrayList;
 
-public class CommandProjectionSELECT implements ExecutionTree {
+public class CommandProjectionSELECT extends CommandArchetype {
     private String orderBY; //Name of the column.
     private boolean ifDISTINCT = false;
-    private ArrayList<String> dataWanted = new ArrayList<>();
+    private ArrayList<String> dataWanted = new ArrayList<String>();
 
     /**
      * Those METHODS below are made before, maybe WRONG or MOUCHE
@@ -19,6 +19,9 @@ public class CommandProjectionSELECT implements ExecutionTree {
      * @param ifDISTINCT
      */
 
+    public CommandProjectionSELECT(ExecutionTree left, ExecutionTree right) {
+    	super(left, right);
+    }
     public void setDistinct(boolean ifDISTINCT) {
         this.ifDISTINCT = ifDISTINCT;
     }

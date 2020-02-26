@@ -2,7 +2,7 @@ package mainStructures.textExecutable.commands;
 
 import mainStructures.textExecutable.ExecutionTree;
 
-public abstract class CommandArchetype {
+public abstract class CommandArchetype implements ExecutionTree{
     private ExecutionTree left;
     private ExecutionTree right;
 
