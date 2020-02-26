@@ -1,6 +1,7 @@
 package mainStructures.toolsModule.makeAnalysis.textBoxes;
 
 import mainStructures.textExecutable.ExecutionTree;
+import mainStructures.textExecutable.commands.CommandProjectionSELECT;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,6 @@ public class BoxSELECT implements BoxArchetype {
 
     @Override
     public ExecutionTree makeNode() {
-        return null;
+        return new CommandProjectionSELECT(textAllocated);
     }
 }

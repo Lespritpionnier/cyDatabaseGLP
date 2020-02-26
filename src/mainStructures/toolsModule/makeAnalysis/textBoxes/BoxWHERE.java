@@ -1,6 +1,7 @@
 package mainStructures.toolsModule.makeAnalysis.textBoxes;
 
 import mainStructures.textExecutable.ExecutionTree;
+import mainStructures.textExecutable.commands.CommandSelectionWHERE;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,6 @@ public class BoxWHERE implements BoxArchetype {
 
     @Override
     public ExecutionTree makeNode() {
-        return null;
+        return new CommandSelectionWHERE(conditions);
     }
 }
