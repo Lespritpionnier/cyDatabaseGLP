@@ -1,5 +1,4 @@
-package mainStructures.dataFramework.dataDetails;
-
+package mainStructures.dataFramework.itemTypes;
 import mainStructures.dataFramework.Item_row;
 import mainStructures.dataFramework.exceptions.WrongDataTypeException;
 

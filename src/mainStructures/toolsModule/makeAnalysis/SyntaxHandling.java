@@ -12,6 +12,10 @@ public class SyntaxHandling {
     String request;
     ArrayList<ExecutionTree> nodes;
 
+    public ArrayList<ExecutionTree> getNodes() {
+        return nodes;
+    }
+
     public SyntaxHandling(String request) {
         this.request = request;
         StringTokenizer handling = new StringTokenizer(convertSyntax(request));

@@ -1,6 +1,6 @@
 package mainStructures.dataFramework;
 
-import mainStructures.dataFramework.dataDetails.DataArchetype;
+import mainStructures.dataFramework.itemTypes.DataArchetype;
 
 import java.util.ArrayList;
 

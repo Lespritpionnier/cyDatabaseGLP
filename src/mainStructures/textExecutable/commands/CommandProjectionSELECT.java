@@ -1,9 +1,7 @@
 package mainStructures.textExecutable.commands;
 
-import mainStructures.dataFramework.dataDetails.DataArchetype;
-import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitor.TreeVisitor;
+import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
 import java.util.ArrayList;
 
@@ -38,26 +36,26 @@ public class CommandProjectionSELECT extends CommandArchetype {
 
 
 /*
-    public int getCOUNT (String columnName, Table_database table){
+    public int getCOUNT (String columnName, Table_list table){
         int count = 0;
         //TO DO
         return count;
     }
-    public double getSUM (String columnName, Table_database table){
+    public double getSUM (String columnName, Table_list table){
         double sum = 0;
         //TO DO
         return sum;
     }
-    public double getAVG (String columnName, Table_database table){
+    public double getAVG (String columnName, Table_list table){
         double numerator = getSUM(columnName, table);
         int denominator = getCOUNT(columnName, table);
         //Need to be better in performance
         return numerator/denominator;
     }
-    public DataArchetype getMAX (String columnName, Table_database table){
+    public DataArchetype getMAX (String columnName, Table_list table){
         //Need a confirmation of the returning type
     }
-    public DataArchetype getMIN (String columnName, Table_database table){
+    public DataArchetype getMIN (String columnName, Table_list table){
         //Need a confirmation of the returning type (ALL ABOVE)
     }
 */

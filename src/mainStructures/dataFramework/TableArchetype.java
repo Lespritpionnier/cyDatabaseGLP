@@ -1,7 +1,6 @@
 package mainStructures.dataFramework;
 
 import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitor.TableVisitor;
 
 public abstract class TableArchetype {
     protected String name;

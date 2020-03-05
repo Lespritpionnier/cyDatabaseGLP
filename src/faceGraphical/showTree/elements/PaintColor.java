@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import faceGraphical.showTree.ColorStrategt;
-import mainStructures.dataFramework.Table_database;
+import mainStructures.dataFramework.Table_list;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
 import mainStructures.textExecutable.commands.CommandProjectionSELECT;
 import mainStructures.textExecutable.commands.CommandSelectionWHERE;
@@ -29,7 +29,7 @@ public class PaintColor implements ColorStrategt{
 	}
 
 	@Override
-	public void setColor(Graphics graphics, Table_database node) {
+	public void setColor(Graphics graphics, Table_list node) {
 		processOperation(graphics);
 
 	}

@@ -1,7 +1,7 @@
 package mainStructures.textExecutable.commands;
 
 import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitor.TreeVisitor;
+import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
 import java.util.ArrayList;
 

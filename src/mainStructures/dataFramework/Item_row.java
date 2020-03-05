@@ -1,8 +1,8 @@
 package mainStructures.dataFramework;
 
 
-import mainStructures.dataFramework.dataDetails.Constraint;
-import mainStructures.dataFramework.dataDetails.DataArchetype;
+import mainStructures.dataFramework.itemTypes.Constraint;
+import mainStructures.dataFramework.itemTypes.DataArchetype;
 
 public abstract class Item_row implements DataArchetype {
     /**

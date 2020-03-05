@@ -1,6 +1,6 @@
 package mainStructures.textExecutable;
 
-import mainStructures.toolsModule.pairVisitor.TreeVisitor;
+import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
 public interface ExecutionTree {
 

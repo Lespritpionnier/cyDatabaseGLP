@@ -1,8 +1,8 @@
 package mainStructures.textExecutable.commands;
 
-import mainStructures.dataFramework.dataDetails.KeyForeign;
+import mainStructures.dataFramework.itemTypes.KeyForeign;
 import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitor.TreeVisitor;
+import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
 public class CommandJointJOIN extends CommandArchetype implements ExecutionTree {
     private KeyForeign choiceON;

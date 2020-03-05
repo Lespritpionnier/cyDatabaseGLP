@@ -1,10 +1,8 @@
 package mainStructures.toolsModule.makeAnalysis.textBoxes;
 
-import mainStructures.dataFramework.Table_warehouse;
+import mainStructures.dataFramework.Table_array;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
-
-import java.util.ArrayList;
 
 public class BoxJOIN extends BoxFROM {
     private String choiceON;
@@ -21,7 +19,7 @@ public class BoxJOIN extends BoxFROM {
     @Override
     public ExecutionTree makeNode() {
         if(choiceON==null){
-            return new Table_warehouse(tableName);
+            return new Table_array(tableName);
         }
         CommandJointJOIN join = new CommandJointJOIN();
         join.setCondition(choiceON);

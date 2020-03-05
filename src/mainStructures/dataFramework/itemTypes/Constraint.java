@@ -1,4 +1,4 @@
-package mainStructures.dataFramework.dataDetails;
+package mainStructures.dataFramework.itemTypes;
 
 public class Constraint {
     private String constraint;

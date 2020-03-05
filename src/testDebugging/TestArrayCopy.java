@@ -1,4 +1,4 @@
-/*/*package testDebug;
+/*package testDebug;
 
 public class TestArrayCopy {
     public static void main(String[] args) {
@@ -79,3 +79,4 @@ public class TestArrayCopy {
 
     }
 }
+*/
