@@ -3,7 +3,7 @@ import mainStructures.dataFramework.Item_row;
 import mainStructures.dataFramework.exceptions.WrongDataTypeException;
 
 public class DataBit extends Item_row {
-    private boolean data;
+    private Boolean data;
 
     @Override
     public boolean checkTypeCorrect(DataArchetype item){

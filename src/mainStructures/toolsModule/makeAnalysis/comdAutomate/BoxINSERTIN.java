@@ -1,4 +1,4 @@
-package mainStructures.toolsModule.makeAnalysis.textBoxes;
+package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
 public class BoxINSERTIN {
 }

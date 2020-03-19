@@ -3,7 +3,7 @@ package faceGraphical.showTree;
 import java.awt.Graphics;
 
 import faceGraphical.showTree.elements.NodePosition;
-import mainStructures.dataFramework.Table_list;
+import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
 import mainStructures.textExecutable.commands.CommandProjectionSELECT;
 import mainStructures.textExecutable.commands.CommandSelectionWHERE;
@@ -35,7 +35,7 @@ public class DisplayVisitor implements TreeVisitor<Void> {
 
 
 	@Override
-	public Void visit(Table_list node) {
+	public Void visit(Table_database node) {
 		// TODO Auto-generated method stub
 		return null;
 	}

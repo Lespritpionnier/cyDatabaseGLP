@@ -1,6 +1,6 @@
 package mainStructures.toolsModule.pairVisitors;
 
-import mainStructures.dataFramework.Table_list;
+import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.commands.*;
 
 public interface TreeVisitor<T> {
@@ -11,7 +11,7 @@ public interface TreeVisitor<T> {
 
     T visit(CommandJointJOIN node);
 
-    T visit(Table_list node);
+    T visit(Table_database node);
 
     
 

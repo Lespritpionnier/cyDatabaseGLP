@@ -2,7 +2,7 @@ package faceGraphical.showTree;
 
 
 
-import mainStructures.dataFramework.Table_list;
+import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
 import mainStructures.textExecutable.commands.CommandProjectionSELECT;
@@ -47,7 +47,7 @@ public class NodeCountVisitor implements TreeVisitor<Integer>{
 	}
 
 	@Override
-	public Integer visit(Table_list node) {
+	public Integer visit(Table_database node) {
 		processTableNode(node);
 		return null;
 	}

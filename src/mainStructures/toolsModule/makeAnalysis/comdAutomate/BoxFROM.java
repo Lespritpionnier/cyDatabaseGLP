@@ -1,6 +1,6 @@
-package mainStructures.toolsModule.makeAnalysis.textBoxes;
+package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-import mainStructures.dataFramework.Table_array;
+import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.ExecutionTree;
 
 public class BoxFROM implements BoxArchetype{
@@ -11,6 +11,6 @@ public class BoxFROM implements BoxArchetype{
 
     @Override
     public ExecutionTree makeNode() {
-        return new Table_array(tableName);
+        return new Table_database(tableName);
     }
 }

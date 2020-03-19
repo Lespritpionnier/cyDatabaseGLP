@@ -1,7 +1,7 @@
 package mainStructures.toolsModule.makeAnalysis;
 
 import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.makeAnalysis.textBoxes.*;
+import mainStructures.toolsModule.makeAnalysis.comdAutomate.*;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;

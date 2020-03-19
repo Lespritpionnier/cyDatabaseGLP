@@ -2,7 +2,7 @@ package faceGraphical.showTree.elements;
 
 import javax.swing.JFrame;
 
-import mainStructures.dataFramework.Table_list;
+import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.textExecutable.commands.CommandArchetype;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
@@ -21,8 +21,8 @@ public class NodeGraphical extends JFrame {
 
 
 	
-	public static Table_list createConstant(String name) {
-		return new Table_list(name);
+	public static Table_database createConstant(String name) {
+		return new Table_database(name);
 	}
 
 

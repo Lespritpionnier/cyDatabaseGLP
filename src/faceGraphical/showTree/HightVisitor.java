@@ -1,6 +1,6 @@
 package faceGraphical.showTree;
 
-import mainStructures.dataFramework.Table_list;
+import mainStructures.dataFramework.Table_database;
 import mainStructures.textExecutable.commands.CommandArchetype;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
 import mainStructures.textExecutable.commands.CommandProjectionSELECT;
@@ -53,7 +53,7 @@ public class HightVisitor implements TreeVisitor<Void> {
 	
 
 	@Override
-	public Void visit(Table_list node) {
+	public Void visit(Table_database node) {
 		processTable();
 		return null;
 	}
