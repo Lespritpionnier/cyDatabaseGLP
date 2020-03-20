@@ -13,6 +13,4 @@ public interface TreeVisitor<T> {
 
     T visit(Table_database node);
 
-    
-
 }

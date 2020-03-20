@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class SyntaxHandling {
 
     String request;
-    ArrayList<ExecutionTree> nodes;
+    ArrayList<ExecutionTree> nodes = new ArrayList<>();
 
     public ArrayList<ExecutionTree> getNodes() {
         return nodes;
@@ -19,8 +19,22 @@ public class SyntaxHandling {
     public SyntaxHandling(String request) {
         this.request = request;
         StringTokenizer handling = new StringTokenizer(convertSyntax(request));
-        makeNodes(handling);
+        startAutomate(handling);
     }
+
+    private void startAutomate (StringTokenizer handling){
+        String head = handling.nextToken();
+        if(temp=equals("SELECT")){
+            BoxSELECT box = new BoxSELECT(handling,nodes);
+        }
+    }
+
+
+
+
+
+
+
 
     //This method needs to be improved a bit
     private void makeNodes(StringTokenizer handling) {
@@ -85,7 +99,7 @@ public class SyntaxHandling {
             String nickName = rep.nextToken();
             String offNickName = tableName + "AS" + nickName;
             withoutAS = (withoutAS.replace(nickName + ".", tableName + ".")
-                        ).replaceAll(offNickName, tableName);
+            ).replaceAll(offNickName, tableName);
         }
         return withoutAS;
     }
@@ -96,7 +110,7 @@ public class SyntaxHandling {
     public SyntaxHandling(String request) {
         this.request = new StringTokenizer(request);
     }
-*/
+    */
 
 
     /*

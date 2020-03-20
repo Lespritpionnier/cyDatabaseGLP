@@ -1,4 +1,4 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-public class BoxDELETE {
+public class BoxDELETE implements AutoBoxArchetype {
 }
