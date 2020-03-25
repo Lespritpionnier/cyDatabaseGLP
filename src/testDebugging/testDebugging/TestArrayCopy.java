@@ -1,5 +1,5 @@
-/*package testDebug;
-
+package testDebugging;
+/*
 public class TestArrayCopy {
     public static void main(String[] args) {
 

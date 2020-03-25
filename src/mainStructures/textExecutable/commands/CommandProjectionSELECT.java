@@ -16,10 +16,14 @@ public class CommandProjectionSELECT extends CommandArchetype {
 
     public CommandProjectionSELECT(ArrayList<String> dataWanted) {
         super();
-        this.dataWanted = dataWanted;
+ //       this.dataWanted = dataWanted;
     }
 
-    /**
+    public CommandProjectionSELECT() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * Those METHODS below are made before, maybe WRONG or MOUCHE
      * DONT FORGET the situation of "SUM, AVG, MIN, MAX, COUNT"
      *                              (Only one syntax to stock)

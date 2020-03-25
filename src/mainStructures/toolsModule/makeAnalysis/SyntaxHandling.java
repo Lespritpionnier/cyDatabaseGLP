@@ -54,6 +54,8 @@ public class SyntaxHandling {
                 BoxSELECT boxSelect = new BoxSELECT(selectInfo);
                 nodes.add(boxSelect.makeNode());
             }
+            
+            
             if (temp.equals("FROM")) {
                 temp = handling.nextToken();
                 nodes.add(myTables.get(temp));
@@ -61,7 +63,10 @@ public class SyntaxHandling {
                 nodes.add(boxFrom.makeNode());
                 temp = handling.nextToken();*/
             }
+            
+            
             while (temp.equals("JOIN")){
+            	BoxJOIN boxJoin = new BoxJOIN();
                 temp = handling.nextToken();
                 nodes.add(myTables.get(temp));
                 //////////////////CONDITION???
@@ -74,6 +79,8 @@ public class SyntaxHandling {
                 nodes.add(boxJoin.makeNode());
                 temp = handling.nextToken();
             }
+            
+            
             if (temp.equals("WHERE")){
                 ArrayList<String> whereInfo = new ArrayList<>();
                 ///////////////////En 3 parties
@@ -162,22 +169,22 @@ public class SyntaxHandling {
         switch (columnsType){
             case "BIT": {
                 DataBit result = new DataBit(value);
-                break;
+                return result;
             }
             case "TEXT": {
                 DataText result = new DataText(value);
-                break;
+                return result;
             }
             case "NUMBER": {
                 DataNumber result = new DataNumber(value);
-                break;
+                return result;
             }
             case "FOREIGN_KEY": {
                 KeyForeign result = new KeyForeign(value);
-                break;
+                return result;
             }
         }
-        return result;
+		return null;
     }
 
 

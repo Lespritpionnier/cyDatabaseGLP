@@ -22,7 +22,7 @@ public class NodeGraphical extends JFrame {
 
 	
 	public static Table_database createConstant(String name) {
-		return new Table_database(name);
+		return new Table_database(name, null);
 	}
 
 
@@ -32,11 +32,11 @@ public class NodeGraphical extends JFrame {
 	
 			switch (type) {
 			case JOIN_SYMBOL:
-				return new CommandJointJOIN(left, right);
+				return new CommandJointJOIN();
 			case SELECT_SYMBOL:
-				return new CommandProjectionSELECT(left, right);
+				return new CommandProjectionSELECT();
 			case WHERE_SYMBOL:
-				return new CommandSelectionWHERE(left, right);
+				return new CommandSelectionWHERE();
 			
 			default:
 				throw new IllegalArgumentException("Unknown operation type : " + type);

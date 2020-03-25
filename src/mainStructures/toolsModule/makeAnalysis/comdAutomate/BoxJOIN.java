@@ -5,15 +5,19 @@ import mainStructures.textExecutable.commands.CommandJointJOIN;
 
 import java.util.ArrayList;
 
-public class BoxJOIN extends BoxFROM {
+public class BoxJOIN{
     private ArrayList<String> choiceON = new ArrayList<>();
 
-    public BoxJOIN(String name){
-        super(name);
-        choiceON = null;
-    }
+//    public BoxJOIN(String name){
+//        super(name);
+//        choiceON = null;
+//    }
 
-    public void addChoiceON(String choice) {
+    public BoxJOIN() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void addChoiceON(String choice) {
         choiceON.add(choice);
     }
 

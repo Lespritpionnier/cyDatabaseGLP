@@ -12,9 +12,9 @@ public class BoxFROM /*extends AutoBoxArchetype*/ {
     public BoxFROM(String tableName) {
         this.tableName = tableName;
     }
-    public ExecutionTree makeNode() {
-        return new Table_warehouse(tableName);
-    }
+//    public ExecutionTree makeNode() {
+//        return new Table_warehouse(tableName);
+//    }
 
 
 

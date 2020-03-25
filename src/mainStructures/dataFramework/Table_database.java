@@ -1,6 +1,7 @@
 package mainStructures.dataFramework;
 
 import mainStructures.dataFramework.exceptions.TableFormatProblemException;
+import mainStructures.dataFramework.itemTypes.KeyPrimary;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
@@ -35,18 +36,18 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
 
     @Override
     public boolean add(Row_table row_table) {
-        try {
-            checkFormat(row_table);
-            row_table.put(keyName,);
+        //try {
+        //    checkFormat(row_table);
+            row_table.put(primaryKey,new KeyPrimary(nextKey));
             super.add(row_table);
-        } catch (TableFormatProblemException e){System.out.println("FORMAT NOT MATCH!!!");return false;}
+        //} catch (TableFormatProblemException e){System.out.println("FORMAT NOT MATCH!!!");return false;}
         nextKey++;
         return true;
     }
     public void checkFormat(Row_table row_table) throws TableFormatProblemException {
         //NEED TO ADD A PART FOR NULL DATA
-        if ((columnsName.length-1)==row_table.size()){
-            if (columnsName.equals(row_table.getColumnsName)) { return; }
+        if ((infoDatatype.size()-1)==row_table.size()){
+            //if (infoDatatype.equals(row_table.getColumnsName)) { return; }
         } throw new TableFormatProblemException();
     }
 
@@ -56,7 +57,7 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
         return null;
     }
     public String getColumnsType(String nameCol) { return infoDatatype.get(nameCol); }
-    public String getKeyName() { return keyName; }
+    public String getKeyName() { return primaryKey; }
     public String getName() { return tableName; }
     public int getNextKey() { return nextKey; }
     @Override

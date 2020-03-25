@@ -16,7 +16,10 @@ public class CommandSelectionWHERE extends CommandArchetype implements Execution
         justForPre = predicateConditions;
     }
 
-    public void addCondition (String condition){
+    public CommandSelectionWHERE() {
+	}
+
+	public void addCondition (String condition){
         PredicateCondition pC = new PredicateCondition(condition);
         predicateConditions.add(pC);
     }
