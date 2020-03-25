@@ -17,6 +17,11 @@ public class DataBit implements Item_row {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "DataBit{"  + data + '}';
+    }
+
     protected void SetValue(String value) {
         switch (value){
             case "YES": {
@@ -28,10 +33,6 @@ public class DataBit implements Item_row {
                 break;
             }
         }
-
-
-
-
     }
 
 

@@ -122,7 +122,7 @@ public class SyntaxHandling {
                     }while (!temp.equals("PRIMARY"));
 
                 for (int index=0 ; index<keyHT.size();index++)
-                    infoDatatype.put(keyHT.get(index),valueHT.get(index));
+                    infoDatatype.put(keyHT.get(index) , valueHT.get(index));
                 Table_database yeahTable = new Table_database(nameNewTable,infoDatatype);
 
                     while (!temp.equals("FOREIGN") && handling.hasMoreTokens()){ temp = handling.nextToken(); }
@@ -130,10 +130,10 @@ public class SyntaxHandling {
                             HashMap<String,String> foreignKeys = new HashMap<>();
                             while (temp.equals("FOREIGN")) {
                                 temp = handling.nextToken();
-                                String nameTF = handling.nextToken();
+                                String nameTableF = handling.nextToken();
                                 temp = handling.nextToken();
-                                String nameFK = handling.nextToken();
-                                foreignKeys.put(nameFK, nameTF);
+                                String nameFoKey = handling.nextToken();
+                                foreignKeys.put(nameFoKey, nameTableF);
                                 if (handling.hasMoreTokens()) {
                                     temp = handling.nextToken();
                                 }
@@ -168,20 +168,16 @@ public class SyntaxHandling {
     private Item_row makeItem(String columnsType, String value) {
         switch (columnsType){
             case "BIT": {
-                DataBit result = new DataBit(value);
-                return result;
+                return new DataBit(value);
             }
             case "TEXT": {
-                DataText result = new DataText(value);
-                return result;
+                return new DataText(value);
             }
             case "NUMBER": {
-                DataNumber result = new DataNumber(value);
-                return result;
+                return new DataNumber(value);
             }
             case "FOREIGN_KEY": {
-                KeyForeign result = new KeyForeign(value);
-                return result;
+                return new KeyForeign(value);
             }
         }
 		return null;

@@ -16,4 +16,12 @@ public class DataNumber implements Item_row {
     public void setData(Double data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "DataNumber{" +
+                "data=" + data +
+                '}';
+    }
+
 }

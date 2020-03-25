@@ -18,10 +18,6 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
     //private ArrayList<Integer> indexRanked = new ArrayList<>()
 
 
-    public void setForeignKeys(HashMap<String, String> foreignKeys) {
-        this.foreignKeys = foreignKeys;
-    }
-
     public Table_database(String tableName, HashMap<String,String> infoDatatype) {
        this.tableName=tableName;
        this.infoDatatype = infoDatatype;
@@ -51,6 +47,16 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
         } throw new TableFormatProblemException();
     }
 
+
+
+    public void setForeignKeys(HashMap<String, String> foreignKeys) {
+        this.foreignKeys = foreignKeys;
+    }
+
+    @Override
+    public String toString() {
+        return "Table_database{" + "tableName='" + tableName + '\'' + '}' + "\n";
+    }
 
     @Override
     public <T> T accept(TreeVisitor<T> visitor) {

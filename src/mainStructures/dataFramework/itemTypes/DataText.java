@@ -16,4 +16,9 @@ public class DataText implements Item_row {
     public void setData(String data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "DataText{" + '\'' + data + '\'' + '}';
+    }
 }
