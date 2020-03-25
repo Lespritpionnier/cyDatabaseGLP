@@ -168,16 +168,20 @@ public class SyntaxHandling {
     private Item_row makeItem(String columnsType, String value) {
         switch (columnsType){
             case "BIT": {
-                return new DataBit(value);
+                DataBit result = new DataBit(value);
+                return result;
             }
             case "TEXT": {
-                return new DataText(value);
+                DataText result = new DataText(value);
+                return result;
             }
             case "NUMBER": {
-                return new DataNumber(value);
+                DataNumber result = new DataNumber(value);
+                return result;
             }
             case "FOREIGN_KEY": {
-                return new KeyForeign(value);
+                KeyForeign result = new KeyForeign(value);
+                return result;
             }
         }
 		return null;
