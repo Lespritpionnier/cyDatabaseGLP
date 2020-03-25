@@ -6,7 +6,7 @@ import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CommandProjectionSELECT extends CommandArchetype {
+public class CommandProjectionSELECT extends CommandArchetype implements ExecutionTree{
     private ArrayList<String> wanted = new ArrayList<>();
     private HashMap<String,String> alias = new HashMap<>();
     private String orderBY; //Name of the column.

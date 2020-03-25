@@ -53,6 +53,7 @@ public class SyntaxHandling {
                 }
                 BoxSELECT boxSelect = new BoxSELECT(selectInfo);
                 nodes.add(boxSelect.makeNode());
+                System.out.println(nodes);
             }
             
             
@@ -62,6 +63,7 @@ public class SyntaxHandling {
                 /*BoxFROM boxFrom = new BoxFROM(temp);
                 nodes.add(boxFrom.makeNode());
                 temp = handling.nextToken();*/
+                System.out.println(nodes);
             }
             
             
@@ -78,6 +80,7 @@ public class SyntaxHandling {
                 }
                 nodes.add(boxJoin.makeNode());
                 temp = handling.nextToken();
+                System.out.println(nodes);
             }
             
             
@@ -92,6 +95,7 @@ public class SyntaxHandling {
                 }
                 BoxWHERE boxWhere = new BoxWHERE(whereInfo);
                 nodes.add(boxWhere.makeNode());
+                System.out.println(nodes);
             }
 
 

@@ -16,6 +16,10 @@ public class CommandSelectionWHERE extends CommandArchetype implements Execution
         justForPre = predicateConditions;
     }
 
+    public String toString() {
+        return "\n VOICI WHERE!{Conditions:" + justForPre + '}' + "\n";
+    }
+    
     public CommandSelectionWHERE() {
 	}
 
