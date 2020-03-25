@@ -94,7 +94,7 @@ public class SyntaxHandling {
                 nodes.add(boxWhere.makeNode());
             }
 
-
+            System.out.println(nodes);
 
             //////////////////////////////////////////////////////////////////////////////////////////////////CREAT
             if(temp.equals("CREAT")){

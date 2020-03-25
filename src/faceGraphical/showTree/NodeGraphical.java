@@ -1,4 +1,4 @@
-package faceGraphical.showTree.elements;
+package faceGraphical.showTree;
 
 
 import mainStructures.dataFramework.Table_database;
@@ -16,6 +16,8 @@ public class NodeGraphical{
 	private static final String JOIN_SYMBOL="CommandJointJOIN";
 	private static final String SELECT_SYMBOL="CommandProjectionSELECT";
 	private static final String WHERE_SYMBOL ="CommandSelectionWHERE";
+	//private static final String CREATE_SYMBOL = "Création";
+	//private static final String DELETE_SYMBOL = "Suppression";
 
 
 	
