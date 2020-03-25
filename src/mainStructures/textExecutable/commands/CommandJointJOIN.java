@@ -4,14 +4,16 @@ import mainStructures.dataFramework.itemTypes.KeyForeign;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
+import java.util.ArrayList;
+
 public class CommandJointJOIN extends CommandArchetype implements ExecutionTree {
-    private KeyForeign choiceON;
-    private String condition;
+    KeyForeign choiceON;
+    ArrayList<String> condition;
 
     public CommandJointJOIN() {
     }
 
-    public void setCondition(String condition) {
+    public void setCondition(ArrayList<String> condition) {
         this.condition = condition;
     }
 

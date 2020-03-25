@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public abstract class AutoBoxArchetype {
-
-    private ArrayList<ExecutionTree> nodes = new ArrayList<>();
+    private ArrayList<ExecutionTree> nodes;
     StringTokenizer remain;
 
     public AutoBoxArchetype(ArrayList<ExecutionTree> nodes, StringTokenizer remain) {

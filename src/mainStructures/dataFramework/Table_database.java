@@ -1,30 +1,66 @@
 package mainStructures.dataFramework;
 
+import mainStructures.dataFramework.exceptions.TableFormatProblemException;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class Table_database extends TableArchetype implements ExecutionTree {
+public class Table_database extends ArrayList<Row_table> implements ExecutionTree {
  //   private KeyPrimary keyCurrent;
-    private ArrayList<Row_table> rows = new ArrayList<>();
-    private ArrayList<String> columns = new ArrayList<>();
+    private String tableName;
+    private HashMap<String,String> infoDatatype;
+    private String primaryKey;
+    private HashMap<String,String> foreignKeys;
+    private int nextKey; //MAYBE RELATE TO SIZE()
+    //private ArrayList<Integer> indexRanked = new ArrayList<>()
 
-   public Table_database(String name) { super(name); }
-   public Table_database(String name, ArrayList<Row_table> rows) {
-      super(name);
-      this.rows = rows;
-   }
 
-   public void addRow(){
-        //TODO
-    }
-    public void addColumn(String name){
-        //TODO
+    public void setForeignKeys(HashMap<String, String> foreignKeys) {
+        this.foreignKeys = foreignKeys;
     }
 
-   @Override
-   public <T> T accept(TreeVisitor<T> visitor) {
-      return null;
-   }
+    public Table_database(String tableName, HashMap<String,String> infoDatatype) {
+       this.tableName=tableName;
+       this.infoDatatype = infoDatatype;
+       nextKey=1; //MAYBE RELATE TO SIZE()
+    }
+
+
+
+    //Think about REMOVE()
+
+
+
+    @Override
+    public boolean add(Row_table row_table) {
+        try {
+            checkFormat(row_table);
+            row_table.put(keyName,);
+            super.add(row_table);
+        } catch (TableFormatProblemException e){System.out.println("FORMAT NOT MATCH!!!");return false;}
+        nextKey++;
+        return true;
+    }
+    public void checkFormat(Row_table row_table) throws TableFormatProblemException {
+        //NEED TO ADD A PART FOR NULL DATA
+        if ((columnsName.length-1)==row_table.size()){
+            if (columnsName.equals(row_table.getColumnsName)) { return; }
+        } throw new TableFormatProblemException();
+    }
+
+
+    @Override
+    public <T> T accept(TreeVisitor<T> visitor) {
+        return null;
+    }
+    public String getColumnsType(String nameCol) { return infoDatatype.get(nameCol); }
+    public String getKeyName() { return keyName; }
+    public String getName() { return tableName; }
+    public int getNextKey() { return nextKey; }
+    @Override
+    public ExecutionTree getLeft() { return null; }
+    @Override
+    public ExecutionTree getRight() { return null; }
 }

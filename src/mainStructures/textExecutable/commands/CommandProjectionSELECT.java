@@ -4,11 +4,15 @@ import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CommandProjectionSELECT extends CommandArchetype {
+    private ArrayList<String> wanted = new ArrayList<>();
+    private HashMap<String,String> alias = new HashMap<>();
     private String orderBY; //Name of the column.
     private boolean ifDISTINCT = false;
-    private ArrayList<String> dataWanted = new ArrayList<>();
+
+
 
     public CommandProjectionSELECT(ArrayList<String> dataWanted) {
         super();

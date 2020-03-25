@@ -1,15 +1,39 @@
 package mainStructures.dataFramework;
 
 
-import mainStructures.dataFramework.itemTypes.Constraint;
-import mainStructures.dataFramework.itemTypes.DataArchetype;
+public interface Item_row {
 
-public abstract class Item_row implements DataArchetype {
+
+
+
+
+
+
+
+
+/*
+    public Item_row(String value) {
+        SetValue(value);
+    }
+    protected abstract void SetValue(String value);
+
+ */
+
+
     /**
      * ATTENTION: Use AddData() with checkConstraint()!
      */
-    private String name;
-    private Constraint constraint;
+    //MAYBE NO NEED OF private String name;
+    //LATER   private Constraint constraint;
+
+
+    /*
+    public void setConstraint(String constraint) {
+        this.constraint.setConstraint(constraint);
+    }
+
+    public String getConstraint() { return constraint.toString(); }
+
 
     public Item_row(String name) {
         this.name = name;
@@ -23,9 +47,6 @@ public abstract class Item_row implements DataArchetype {
     public void setName(String name) {
         this.name = name;
     }
-    public void setConstraint(String constraint) {
-        this.constraint.setConstraint(constraint);
-    }
     public String getName() { return name; }
-    public String getConstraint() { return constraint.toString(); }
+ */
 }

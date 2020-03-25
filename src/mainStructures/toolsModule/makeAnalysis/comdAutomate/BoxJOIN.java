@@ -1,28 +1,34 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
 import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.textExecutable.commands.CommandJointJOIN;
 
+import java.util.ArrayList;
+
 public class BoxJOIN extends BoxFROM {
-    private String choiceON;
+    private ArrayList<String> choiceON = new ArrayList<>();
 
     public BoxJOIN(String name){
         super(name);
         choiceON = null;
     }
 
-    public void setChoiceON(String choiceON) {
-        this.choiceON = choiceON;
+    public void addChoiceON(String choice) {
+        choiceON.add(choice);
     }
 
-    @Override
-    public ExecutionTree makeNode() {
-        if(choiceON==null){
-            return new Table_database(tableName);
-        }
+    public CommandJointJOIN makeNode() {
         CommandJointJOIN join = new CommandJointJOIN();
         join.setCondition(choiceON);
         return join;
     }
+
+
+  /*!!!!!!!!!!!
+    public BoxJOIN(ArrayList<ExecutionTree> nodes, StringTokenizer remain) {
+
+        super(nodes, remain);
+    }
+  !!!!!!!!!!!*/
+
 }

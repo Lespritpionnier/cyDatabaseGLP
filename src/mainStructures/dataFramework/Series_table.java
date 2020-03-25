@@ -1,7 +1,5 @@
 package mainStructures.dataFramework;
 
-import mainStructures.dataFramework.itemTypes.DataArchetype;
-
 import java.util.ArrayList;
 
 public class Series_table {
@@ -11,7 +9,7 @@ public class Series_table {
      */
     private String targetColumnName;
   //  private String washingTerm;
-    private ArrayList<DataArchetype> targets = new ArrayList<>();
+    private ArrayList<Item_row> targets = new ArrayList<>();
   //  private ArrayList<Integer> markedRows = new ArrayList<>();
 
 }

@@ -3,18 +3,16 @@ package saveStockpile;
 import mainStructures.dataFramework.Table_database;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CyDatabase implements Serializable {
-    private String name;
-    private ArrayList<Table_database> listTables = new ArrayList<Table_database>();
-    private ArrayList<Table_database> arrayTables = new ArrayList<>();
+    private HashMap<String, Table_database> myTables = new HashMap<String, Table_database>();
 
-    public CyDatabase(String name) {
-        this.name = name;
+    public void addTable (Table_database newTable) {
+        myTables.put(newTable.getName(),newTable);
+    }
+    public Table_database getTable(String tableName){
+        return myTables.get(tableName);
     }
 
-    public String getName() {
-        return name;
-    }
 }

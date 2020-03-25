@@ -1,8 +1,12 @@
 package mainStructures.dataFramework.itemTypes;
 
-import mainStructures.dataFramework.Table_database;
-
 public class KeyForeign extends KeyPrimary {
-    Table_database aimedTable;
-    KeyPrimary aimedKey;
+    /*
+    String aimedTable;
+    String aimedKey;
+     */
+
+    public KeyForeign(String data) {
+        super(Long.parseLong(data));
+    }
 }

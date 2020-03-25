@@ -1,10 +1,55 @@
 package mainStructures.dataFramework.itemTypes;
 import mainStructures.dataFramework.Item_row;
-import mainStructures.dataFramework.exceptions.WrongDataTypeException;
+import mainStructures.toolsModule.makeAnalysis.comdAutomate.BoxSELECT;
 
-public class DataBit extends Item_row {
+public class DataBit implements Item_row {
     private Boolean data;
 
+    public DataBit(String value) {
+        SetValue(value);
+    }
+
+    public Boolean getData() {
+        return data;
+    }
+
+    public void setData(Boolean data) {
+        this.data = data;
+    }
+
+    protected void SetValue(String value) {
+        switch (value){
+            case "YES": {
+                data = true;
+                break;
+            }
+            case "NO": {
+                data = false;
+                break;
+            }
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     @Override
     public boolean checkTypeCorrect(DataArchetype item){
         //TODO
@@ -23,6 +68,7 @@ public class DataBit extends Item_row {
     public boolean equals(DataArchetype item) {
         //TODO
     }
+ */
 
 
 }

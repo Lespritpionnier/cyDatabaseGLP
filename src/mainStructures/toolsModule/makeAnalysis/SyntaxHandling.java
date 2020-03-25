@@ -1,46 +1,49 @@
 package mainStructures.toolsModule.makeAnalysis;
 
+import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.Row_table;
+import mainStructures.dataFramework.Table_database;
+import mainStructures.dataFramework.itemTypes.DataBit;
+import mainStructures.dataFramework.itemTypes.DataNumber;
+import mainStructures.dataFramework.itemTypes.DataText;
+import mainStructures.dataFramework.itemTypes.KeyForeign;
 import mainStructures.textExecutable.ExecutionTree;
 import mainStructures.toolsModule.makeAnalysis.comdAutomate.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 public class SyntaxHandling {
 
+
+    HashMap<String, Table_database> myTables;
+
+
     String request;
     ArrayList<ExecutionTree> nodes = new ArrayList<>();
+
 
     public ArrayList<ExecutionTree> getNodes() {
         return nodes;
     }
 
-    public SyntaxHandling(String request) {
+    public SyntaxHandling(HashMap<String, Table_database> myTables, String request) {
+        this.myTables = myTables;
         this.request = request;
         StringTokenizer handling = new StringTokenizer(convertSyntax(request));
-        startAutomate(handling);
+        makeNodes(handling);
     }
-
-    private void startAutomate (StringTokenizer handling){
-        String head = handling.nextToken();
-        if(temp=equals("SELECT")){
-            BoxSELECT box = new BoxSELECT(handling,nodes);
-        }
-    }
-
-
-
-
-
-
 
 
     //This method needs to be improved a bit
     private void makeNodes(StringTokenizer handling) {
         String temp;
-        while(handling.hasMoreTokens()){
+        if (handling.hasMoreTokens()){
             temp = handling.nextToken();
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////SELECT
             if(temp.equals("SELECT")){
                 ArrayList<String> selectInfo = new ArrayList<>();
                 while (handling.hasMoreTokens()){
@@ -53,31 +56,133 @@ public class SyntaxHandling {
             }
             if (temp.equals("FROM")) {
                 temp = handling.nextToken();
-                BoxFROM boxFrom = new BoxFROM(temp);
+                nodes.add(myTables.get(temp));
+                /*BoxFROM boxFrom = new BoxFROM(temp);
                 nodes.add(boxFrom.makeNode());
-                temp = handling.nextToken();
+                temp = handling.nextToken();*/
             }
             while (temp.equals("JOIN")){
-                BoxJOIN boxJoin = new BoxJOIN(handling.nextToken());
-                nodes.add(boxJoin.makeNode());
+                temp = handling.nextToken();
+                nodes.add(myTables.get(temp));
+                //////////////////CONDITION???
                 temp = handling.nextToken();
                 if(temp.equals("ON")){
-                    boxJoin.setChoiceON(handling.nextToken());
+                    boxJoin.addChoiceON(handling.nextToken());
+                    boxJoin.addChoiceON(handling.nextToken());
+                    boxJoin.addChoiceON(handling.nextToken());
                 }
                 nodes.add(boxJoin.makeNode());
                 temp = handling.nextToken();
             }
             if (temp.equals("WHERE")){
                 ArrayList<String> whereInfo = new ArrayList<>();
+                ///////////////////En 3 parties
                 while (handling.hasMoreTokens()){
                     temp = handling.nextToken();
-                    whereInfo.add(temp);
+                    if (!temp.equals("AND")){
+                        whereInfo.add(temp);
+                    }
                 }
                 BoxWHERE boxWhere = new BoxWHERE(whereInfo);
                 nodes.add(boxWhere.makeNode());
             }
+
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////CREAT
+            if(temp.equals("CREAT")){
+                temp = handling.nextToken();
+                String nameNewTable  = handling.nextToken();
+
+                ArrayList<String> keyHT = new ArrayList<>();
+                ArrayList<String> valueHT = new ArrayList<>();
+                HashMap<String,String> infoDatatype = new HashMap<>();
+
+
+                int wish = 2;
+                    do { if(wish%2==0){
+                        keyHT.add(temp);
+                    } else {
+                        if (temp.equals("AUTOINCREMENT")){
+                            valueHT.add("PRIMARY_KEY");
+                        }else if (temp.equals("LONG")){
+                            valueHT.add("FOREIGN_KEY");
+                        }
+                            valueHT.add(temp);
+                    }
+                        wish++;
+                        temp = handling.nextToken();
+                    }while (!temp.equals("PRIMARY"));
+
+                for (int index=0 ; index<keyHT.size();index++)
+                    infoDatatype.put(keyHT.get(index),valueHT.get(index));
+                Table_database yeahTable = new Table_database(nameNewTable,infoDatatype);
+
+                    while (!temp.equals("FOREIGN") && handling.hasMoreTokens()){ temp = handling.nextToken(); }
+                        if(temp.equals("FOREIGN")){
+                            HashMap<String,String> foreignKeys = new HashMap<>();
+                            while (temp.equals("FOREIGN")) {
+                                temp = handling.nextToken();
+                                String nameTF = handling.nextToken();
+                                temp = handling.nextToken();
+                                String nameFK = handling.nextToken();
+                                foreignKeys.put(nameFK, nameTF);
+                                if (handling.hasMoreTokens()) {
+                                    temp = handling.nextToken();
+                                }
+                            }
+                            yeahTable.setForeignKeys(foreignKeys);
+                        }
+                myTables.put(nameNewTable,yeahTable);
+            }
+
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////INSERT
+            if(temp.equals("INSERT")) {
+                temp = handling.nextToken();
+                String nameToTable = handling.nextToken();
+                temp = handling.nextToken();
+                ArrayList<String> toNameCol = new ArrayList<>();
+                    while (!temp.equals("VALUES")){ toNameCol.add(temp); }
+                ArrayList<String> newDataCol = new ArrayList<>();
+                    while (handling.hasMoreTokens()){ newDataCol.add(temp); }
+                Row_table welcome = new Row_table();
+                    for (int index=0 ; index<toNameCol.size() ; index++){
+                        welcome.put(toNameCol.get(index),
+                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)),
+                                        newDataCol.get(index)));
+                    }
+                myTables.get(nameToTable).add(welcome);
+            }
         }
     }
+
+    private Item_row makeItem(String columnsType, String value) {
+        switch (columnsType){
+            case "BIT": {
+                DataBit result = new DataBit(value);
+                break;
+            }
+            case "TEXT": {
+                DataText result = new DataText(value);
+                break;
+            }
+            case "NUMBER": {
+                DataNumber result = new DataNumber(value);
+                break;
+            }
+            case "FOREIGN_KEY": {
+                KeyForeign result = new KeyForeign(value);
+                break;
+            }
+        }
+        return result;
+    }
+
+
+
+
 
 
     //This method needs to be improved a lot
@@ -99,10 +204,72 @@ public class SyntaxHandling {
             String nickName = rep.nextToken();
             String offNickName = tableName + "AS" + nickName;
             withoutAS = (withoutAS.replace(nickName + ".", tableName + ".")
-            ).replaceAll(offNickName, tableName);
+            ).replaceAll(offNickName, tableName)
+                    .replaceAll("\\("," ").replaceAll("\\)"," ")
+                    .replaceAll(","," ").replaceAll(";","").replaceAll("\"","");
         }
         return withoutAS;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    private void startAutomate (StringTokenizer handling){
+        String head = handling.nextToken();
+        switch (head) {
+            case "SELECT": {
+                BoxSELECT box = new BoxSELECT(nodes, handling);
+                break;
+            }
+            case "CREAT": {
+                BoxCREAT box = new BoxCREAT(nodes, handling);
+                break;
+            }
+            case "INSERT": {
+                BoxINSERT box = new BoxINSERT(nodes, handling);
+                break;
+            }
+            case "UPDATE": {
+                BoxUPDATE box = new BoxUPDATE(nodes, handling);
+                break;
+            }
+        }
+    }
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*
+    private class BoxSELECT extends AutoBoxArchetype {
+        public BoxSELECT(ArrayList<ExecutionTree> nodes, StringTokenizer remain) {
+            super(nodes, remain);
+        }
+
+        public BoxSELECT(ArrayList<String> selectInfo) {
+            super();
+        }
+
+        @Override
+        public void runAutomate() {
+        }
+
+    }
+
+
+
+ !!!!!!!!!!!!!!!!!!!*/
 
 
     /*

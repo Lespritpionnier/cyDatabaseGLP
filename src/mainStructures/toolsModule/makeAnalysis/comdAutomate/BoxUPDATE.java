@@ -5,8 +5,8 @@ import mainStructures.textExecutable.ExecutionTree;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class BoxDELETE extends AutoBoxArchetype {
-    public BoxDELETE(ArrayList<ExecutionTree> nodes, StringTokenizer remain) {
+public class BoxUPDATE extends AutoBoxArchetype {
+    public BoxUPDATE(ArrayList<ExecutionTree> nodes, StringTokenizer remain) {
         super(nodes, remain);
     }
 }

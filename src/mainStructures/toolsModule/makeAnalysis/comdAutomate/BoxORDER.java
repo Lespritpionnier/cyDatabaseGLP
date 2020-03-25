@@ -1,4 +1,4 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-public class BoxUPDATEandSET implements AutoBoxArchetype {
+public class BoxORDER {
 }

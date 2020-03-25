@@ -1,4 +1,4 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-public class BoxINSERTIN implements AutoBoxArchetype {
+public class BoxINSERT /*extends AutoBoxArchetype*/ {
 }
