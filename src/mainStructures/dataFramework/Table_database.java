@@ -8,6 +8,7 @@ import mainStructures.toolsModule.pairVisitors.TreeVisitor;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class Table_database extends ArrayList<Row_table> implements ExecutionTree {
  //   private KeyPrimary keyCurrent;
     private String tableName;
@@ -22,6 +23,13 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
        this.tableName=tableName;
        this.infoDatatype = infoDatatype;
        nextKey=1; //MAYBE RELATE TO SIZE()
+		if(infoDatatype!=null) {
+	       for(String key: infoDatatype.keySet()){
+	           if(infoDatatype.get(key).equals("PRIMARY_KEY")){
+	        	   primaryKey=key;
+	           }
+	       }
+		}
     }
 
 
@@ -53,10 +61,10 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
         this.foreignKeys = foreignKeys;
     }
 
-    @Override
-    public String toString() {
-        return "Table_database{" + "tableName='" + tableName + '\'' + '}' + "\n";
-    }
+//    @Override
+//    public String toString() {
+//        return "Table_database{" + "tableName='" + tableName + '\'' + '}' + "\n";
+//    }
 
     @Override
     public <T> T accept(TreeVisitor<T> visitor) {

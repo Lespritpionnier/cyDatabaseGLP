@@ -32,7 +32,9 @@ public class SyntaxHandling {
     public SyntaxHandling(HashMap<String, Table_database> myTables, String request) {
         this.myTables = myTables;
         this.request = request;
-        StringTokenizer handling = new StringTokenizer(convertSyntax(request));
+        String convertS = convertSyntax(request);
+        System.out.println(convertS);
+        StringTokenizer handling = new StringTokenizer(convertS);
         makeNodes(handling);
     }
 
@@ -101,7 +103,7 @@ public class SyntaxHandling {
 
 
             //////////////////////////////////////////////////////////////////////////////////////////////////CREAT
-            if(temp.equals("CREAT")){
+            if(temp.equals("CREATE")){
                 temp = handling.nextToken();
                 String nameNewTable  = handling.nextToken();
 
@@ -110,23 +112,38 @@ public class SyntaxHandling {
                 HashMap<String,String> infoDatatype = new HashMap<>();
 
 
+                temp = handling.nextToken();
                 int wish = 2;
+System.out.println(temp +"  "+ wish);
                     do { if(wish%2==0){
-                        keyHT.add(temp);
+                        	keyHT.add(temp);
                     } else {
-                        if (temp.equals("AUTOINCREMENT")){
-                            valueHT.add("PRIMARY_KEY");
+                    	if (temp.equals("AUTOINCREMENT")){
+                    		valueHT.add("PRIMARY_KEY");
+                            temp = handling.nextToken();
+                            wish++;
                         }else if (temp.equals("LONG")){
-                            valueHT.add("FOREIGN_KEY");
+                        	valueHT.add("FOREIGN_KEY");
+                            temp = handling.nextToken();
+                            wish++;
                         }
-                            valueHT.add(temp);
+System.out.println(temp +"  "+ wish);
+						if(wish%2!=0) {
+                    	  valueHT.add(temp);
+						}else {
+							keyHT.add(temp);
+						}
                     }
                         wish++;
                         temp = handling.nextToken();
                     }while (!temp.equals("PRIMARY"));
 
-                for (int index=0 ; index<keyHT.size();index++)
+                for (int index=0 ; index<keyHT.size();index++) {
+                	
+System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
+                	
                     infoDatatype.put(keyHT.get(index) , valueHT.get(index));
+                }
                 Table_database yeahTable = new Table_database(nameNewTable,infoDatatype);
 
                     while (!temp.equals("FOREIGN") && handling.hasMoreTokens()){ temp = handling.nextToken(); }
@@ -156,13 +173,21 @@ public class SyntaxHandling {
                 temp = handling.nextToken();
                 ArrayList<String> toNameCol = new ArrayList<String>();
   //      		System.out.println(temp);
-                    while (!temp.equals("VALUES")){ toNameCol.add(temp); temp = handling.nextToken();}
+                    while (!temp.equals("VALUES")){toNameCol.add(temp); temp = handling.nextToken();}
                 ArrayList<String> newDataCol = new ArrayList<>();
-                    while (handling.hasMoreTokens()){ newDataCol.add(temp); temp = handling.nextToken();}
+                    while (handling.hasMoreTokens()){temp = handling.nextToken(); newDataCol.add(temp); }
                 Row_table welcome = new Row_table();
                     for (int index=0 ; index<toNameCol.size() ; index++){
+                    	
+System.out.println("begain " + toNameCol.get(index));
+System.out.println(nameToTable);
+System.out.println(newDataCol.get(index)+" end");
+System.out.println(myTables.get(nameToTable));
+System.out.println(myTables);
+                    	
                         welcome.put(toNameCol.get(index),
-                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)),newDataCol.get(index)));
+                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)),
+                                		newDataCol.get(index)));
                     }
                 myTables.get(nameToTable).add(welcome);
             }
@@ -170,6 +195,7 @@ public class SyntaxHandling {
     }
 
     private Item_row makeItem(String columnsType, String value) {
+System.out.println(columnsType +"!!!!"+ value);
         switch (columnsType){
             case "BIT": {
                 DataBit result = new DataBit(value);

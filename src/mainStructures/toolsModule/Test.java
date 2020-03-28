@@ -41,7 +41,7 @@ public class Test {
 	
 
 
-		
+		/*
 		String select = "SELECT c.nom, c.prenom " +
 				" FROM  (client AS c INNER JOIN commande AS co " +
 				" ON (c.id_client = co.id_client)) " +
@@ -49,13 +49,13 @@ public class Test {
 				" ON (co.id_voiture = v.id_voiture) " +
 				" WHERE v.marque = \"Peugeot\" AND co.quantite >= 20; ";
 		SyntaxHandling selectSQL = new SyntaxHandling(myDB.getMyTables(),select);
-
+*/
 
 		
 		
 		
 
-		String creat = "CREATE TABLE adresse ( " +
+		String creat = "CREATE TABLE adresse(" +
 				"id_adresse AUTOINCREMENT, " +
 				"numero TEXT, " +
 				"nom TEXT, " +

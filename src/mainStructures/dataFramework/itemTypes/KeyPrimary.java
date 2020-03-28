@@ -13,7 +13,10 @@ public class KeyPrimary implements Item_row {
     public Long getData() {
         return data;
     }
-
+    
+    public String toString() {
+        return "KeyPrimary:{"  + data +'}';
+    }
    /*
     @Override
     public boolean checkTypeCorrect(DataArchetype item) throws WrongDataTypeException {
