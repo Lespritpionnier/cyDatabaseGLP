@@ -154,15 +154,15 @@ public class SyntaxHandling {
                 temp = handling.nextToken();
                 String nameToTable = handling.nextToken();
                 temp = handling.nextToken();
-                ArrayList<String> toNameCol = new ArrayList<>();
-                    while (!temp.equals("VALUES")){ toNameCol.add(temp); }
+                ArrayList<String> toNameCol = new ArrayList<String>();
+  //      		System.out.println(temp);
+                    while (!temp.equals("VALUES")){ toNameCol.add(temp); temp = handling.nextToken();}
                 ArrayList<String> newDataCol = new ArrayList<>();
-                    while (handling.hasMoreTokens()){ newDataCol.add(temp); }
+                    while (handling.hasMoreTokens()){ newDataCol.add(temp); temp = handling.nextToken();}
                 Row_table welcome = new Row_table();
                     for (int index=0 ; index<toNameCol.size() ; index++){
                         welcome.put(toNameCol.get(index),
-                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)),
-                                        newDataCol.get(index)));
+                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)),newDataCol.get(index)));
                     }
                 myTables.get(nameToTable).add(welcome);
             }
@@ -188,7 +188,8 @@ public class SyntaxHandling {
                 return result;
             }
         }
-		return null;
+        DataText result = new DataText(value);
+        return result;
     }
 
 
@@ -199,7 +200,7 @@ public class SyntaxHandling {
     //This method needs to be improved a lot
     public String convertSyntax (String originalCommand){
         String onlyWords = (originalCommand.toString().replaceFirst(";", "")).replaceAll(",", "");
-        String withoutAS = onlyWords.replaceAll(" AS ","AS");
+        String withoutAS = onlyWords.replaceAll(" AS ","AS").replaceAll("\\("," ").replaceAll("\\)"," ").replaceAll(","," ").replaceAll(";","").replaceAll("\"","");
         ArrayList<String> offAS = new ArrayList<>();
         StringTokenizer checkAS = new StringTokenizer(withoutAS);
         String temp = checkAS.nextToken();
@@ -214,11 +215,10 @@ public class SyntaxHandling {
             String tableName = rep.nextToken();
             String nickName = rep.nextToken();
             String offNickName = tableName + "AS" + nickName;
-            withoutAS = (withoutAS.replace(nickName + ".", tableName + ".")
-            ).replaceAll(offNickName, tableName)
-                    .replaceAll("\\("," ").replaceAll("\\)"," ")
-                    .replaceAll(","," ").replaceAll(";","").replaceAll("\"","");
+            withoutAS = (withoutAS.replace(nickName + ".", tableName + ".")).replaceAll(offNickName, tableName);
+//            withoutAS =withoutAS.replaceAll("\\("," ").replaceAll("\\)"," ").replaceAll(","," ").replaceAll(";","").replaceAll("\"","");
         }
+ //      System.out.println(withoutAS);
         return withoutAS;
     }
 

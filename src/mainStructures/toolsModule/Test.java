@@ -18,49 +18,8 @@ public class Test {
 		
 		CommandJointJOIN join1=new CommandJointJOIN();
 		CommandJointJOIN join2=new CommandJointJOIN();*/
+	
 		
-		
-		CyDatabase myDB = new CyDatabase();
-
-		String creat = "CREATE TABLE adresse ( " +
-				"id_adresse AUTOINCREMENT,  " +
-				"numero TEXT,  " +
-				"nom TEXT, " +
-				"ville TEXT,  " +
-				"code_postal TEXT, " +
-				"PRIMARY KEY(id_adresse));";
-		SyntaxHandling creatSQL = new SyntaxHandling(myDB.getMyTables(),creat);
-
-
-		String insert1 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
-				"VALUES (\"2\", \"Jean\", \"Paris\", \"75015\") ;";
-		SyntaxHandling insertSQL1 = new SyntaxHandling(myDB.getMyTables(),insert1);
-		System.out.println(myDB.getTable(adresse));
-
-
-		String insert2 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
-				"VALUES (\"3\", \"Michel\", \"Paris\", \"75005\") ;";
-		SyntaxHandling insertSQL2 = new SyntaxHandling(myDB.getMyTables(),insert2);
-		System.out.println(myDB.getTable(adresse));
-
-
-		String insert3 = "INSERT INTO adresse (numero, nom, ville, code_postal)" +
-				"VALUES (\"8\", \"MACRON\", \"Cergy\", \"95000\") ;";
-		SyntaxHandling insertSQL3 = new SyntaxHandling(myDB.getMyTables(),insert3);
-		System.out.println(myDB.getTable(adresse));
-
-		String select = "SELECT c.nom, c.prenom" +
-				"FROM  (client AS c INNER JOIN commande AS co" +
-				"ON (c.id_client = co.id_client))" +
-				"INNER JOIN voiture AS v" +
-				"ON (co.id_voiture = v.id_voiture)" +
-				"WHERE v.marque = \"Peugeot\" AND co.quantite >= 20;";
-		SyntaxHandling selectSQL = new SyntaxHandling(myDB.getMyTables(),select);
-
-
-
-
-		/*
 		Table_database tab1=new Table_database("tab1", null);
 		Table_database tab2=new Table_database("tab2", null);
 		Table_database tab3=new Table_database("tab3", null);
@@ -69,11 +28,64 @@ public class Test {
 		base.addTable(tab1);
 		base.addTable(tab2);
 		base.addTable(tab3);
-		 */
+		 
+		base.serializationSave("fichier.ser");
+		base.serializationRead("fichier.ser");
+		
+		
+		
+		CyDatabase myDB = new CyDatabase();
+		
 
 
-		myDB.serializationSave("fichier.ser");
-		myDB.serializationRead("fichier.ser");
+	
+
+
+		
+		String select = "SELECT c.nom, c.prenom " +
+				" FROM  (client AS c INNER JOIN commande AS co " +
+				" ON (c.id_client = co.id_client)) " +
+				" INNER JOIN voiture AS v " +
+				" ON (co.id_voiture = v.id_voiture) " +
+				" WHERE v.marque = \"Peugeot\" AND co.quantite >= 20; ";
+		SyntaxHandling selectSQL = new SyntaxHandling(myDB.getMyTables(),select);
+
+
+		
+		
+		
+
+		String creat = "CREATE TABLE adresse ( " +
+				"id_adresse AUTOINCREMENT, " +
+				"numero TEXT, " +
+				"nom TEXT, " +
+				"ville TEXT, " +
+				"code_postal TEXT, " +
+				"PRIMARY KEY(id_adresse));";
+		SyntaxHandling creatSQL = new SyntaxHandling(myDB.getMyTables(),creat);
+		System.out.println(myDB.toString());
+
+
+		String insert1 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
+				"VALUES (\"2\", \"Jean\", \"Paris\", \"75015\") ;";
+		SyntaxHandling insertSQL1 = new SyntaxHandling(myDB.getMyTables(),insert1);
+		System.out.println(myDB.getTable("adresse"));
+
+
+		String insert2 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
+				"VALUES (\"3\", \"Michel\", \"Paris\", \"75005\") ;";
+		SyntaxHandling insertSQL2 = new SyntaxHandling(myDB.getMyTables(),insert2);
+		System.out.println(myDB.getTable("adresse"));
+
+		System.out.println("wesh?");
+		String insert3 = "INSERT INTO adresse (numero, nom, ville, code_postal)" +
+				"VALUES (\"8\", \"MACRON\", \"Cergy\", \"95000\") ;";
+		SyntaxHandling insertSQL3 = new SyntaxHandling(myDB.getMyTables(),insert3);
+		System.out.println(myDB.getTable("adresse"));
+
+
+
+
 
 
 
