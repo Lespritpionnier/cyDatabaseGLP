@@ -162,7 +162,7 @@ public class SyntaxHandling {
                 Row_table welcome = new Row_table();
                     for (int index=0 ; index<toNameCol.size() ; index++){
                         welcome.put(toNameCol.get(index),
-                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)),newDataCol.get(index)));
+                                makeItem(myTables.get(nameToTable).getColumnsType(toNameCol.get(index)), newDataCol.get(index)));
                     }
                 myTables.get(nameToTable).add(welcome);
             }
