@@ -1,17 +1,17 @@
-package faceGraphical.userInterface;
+package faceGraphical.showTree;
 
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import faceGraphical.showTree.elements.TreePanel;
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.textExecutable.TreeBuilder;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 import mainStructures.toolsModule.makeAnalysis.SyntaxHandling;
+import mainStructures.toolsModule.treeExcutable.OldTreeBuilder;
 
 
 
@@ -31,7 +31,7 @@ public class GUI extends JFrame {
 	public GUI(ArrayList<ExecutionTree> input) {
 		super("Graphical Tree Demo");
 
-		TreeBuilder builder = new TreeBuilder();
+		OldTreeBuilder builder = new OldTreeBuilder();
 		builder.addAll(input);
 		ExecutionTree tree = builder.buildTree1(input);
 
@@ -55,13 +55,13 @@ public class GUI extends JFrame {
 		//ArrayList<ExecutionTree> list = test.getNodes();
 		CommandJointJOIN join1=new CommandJointJOIN();
 		CommandJointJOIN join2=new CommandJointJOIN();
-		Table_database tab1=new Table_database("tab1", null);
-		Table_database tab2=new Table_database("tab2", null);
-		Table_database tab3=new Table_database("tab3", null);
+		TableDatabase tab1=new TableDatabase("tab1", null);
+		TableDatabase tab2=new TableDatabase("tab2", null);
+		TableDatabase tab3=new TableDatabase("tab3", null);
 		CommandProjectionSELECT proj=new CommandProjectionSELECT(null);
 		CommandSelectionWHERE sel=new CommandSelectionWHERE(null);
 		ArrayList<ExecutionTree> list =new ArrayList<ExecutionTree> ();
-		TreeBuilder tree=new TreeBuilder();
+		OldTreeBuilder tree=new OldTreeBuilder();
 		list.add(proj);
 		list.add(sel);
 		list.add(tab1);

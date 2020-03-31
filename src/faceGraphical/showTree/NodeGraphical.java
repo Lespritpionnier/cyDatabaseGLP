@@ -1,13 +1,12 @@
 package faceGraphical.showTree;
 
 
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.ExecutionTree;
-
-import mainStructures.textExecutable.commands.CommandArchetype;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandArchetypeNode;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 
 
 
@@ -21,13 +20,13 @@ public class NodeGraphical{
 
 
 	
-	public static Table_database createConstant(String name) {
-		return new Table_database(name, null);
+	public static TableDatabase createConstant(String name) {
+		return new TableDatabase(name, null);
 	}
 
 
 
-	public static CommandArchetype createOperation(String type, ExecutionTree left, ExecutionTree right) throws IllegalArgumentException {
+	public static CommandArchetypeNode createOperation(String type, ExecutionTree left, ExecutionTree right) throws IllegalArgumentException {
 		
 	
 			switch (type) {

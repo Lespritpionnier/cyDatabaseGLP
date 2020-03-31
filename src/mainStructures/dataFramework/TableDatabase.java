@@ -2,14 +2,15 @@ package mainStructures.dataFramework;
 
 import mainStructures.dataFramework.exceptions.TableFormatProblemException;
 import mainStructures.dataFramework.itemTypes.KeyPrimary;
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitors.TreeVisitor;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.toolsModule.treeExcutable.TreeVisitor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Table_database extends ArrayList<Row_table> implements ExecutionTree {
+public class TableDatabase extends ArrayList<RowTable> implements ExecutionTree {
  //   private KeyPrimary keyCurrent;
     private String tableName;
     private HashMap<String,String> infoDatatype;
@@ -19,16 +20,16 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
     //private ArrayList<Integer> indexRanked = new ArrayList<>()
 
 
-    public Table_database(String tableName, HashMap<String,String> infoDatatype) {
+    public TableDatabase(String tableName, HashMap<String,String> infoDatatype) {
        this.tableName=tableName;
        this.infoDatatype = infoDatatype;
        nextKey=1; //MAYBE RELATE TO SIZE()
-		if(infoDatatype!=null) {
-	       for(String key: infoDatatype.keySet()){
-	           if(infoDatatype.get(key).equals("PRIMARY_KEY")){
-	        	   primaryKey=key;
-	           }
+		//if(infoDatatype!=null) {
+       try{	for(String key: infoDatatype.keySet()){
+	           if(infoDatatype.get(key).equals("PRIMARY_KEY")){ primaryKey=key; }
 	       }
+		}catch (NullPointerException e) {
+			System.err.println("Table:\""+ tableName +"\" is " + e.getMessage());
 		}
     }
 
@@ -39,7 +40,7 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
 
 
     @Override
-    public boolean add(Row_table row_table) {
+    public boolean add(RowTable row_table) {
         //try {
         //    checkFormat(row_table);
             row_table.put(primaryKey,new KeyPrimary(nextKey));
@@ -48,7 +49,7 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
         nextKey++;
         return true;
     }
-    public void checkFormat(Row_table row_table) throws TableFormatProblemException {
+    public void checkFormat(RowTable row_table) throws TableFormatProblemException {
         //NEED TO ADD A PART FOR NULL DATA
         if ((infoDatatype.size()-1)==row_table.size()){
             //if (infoDatatype.equals(row_table.getColumnsName)) { return; }
@@ -61,15 +62,11 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
         this.foreignKeys = foreignKeys;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Table_database{" + "tableName='" + tableName + '\'' + '}' + "\n";
-//    }
 
     @Override
-    public <T> T accept(TreeVisitor<T> visitor) {
-        return null;
-    }
+	public <T> T accept(TreeVisitor<T> visitor) {
+		return visitor.visit(this);
+	}
     public String getColumnsType(String nameCol) { return infoDatatype.get(nameCol); }
     public String getKeyName() { return primaryKey; }
     public String getName() { return tableName; }
@@ -78,4 +75,18 @@ public class Table_database extends ArrayList<Row_table> implements ExecutionTre
     public ExecutionTree getLeft() { return null; }
     @Override
     public ExecutionTree getRight() { return null; }
+
+
+
+	@Override
+	public void setLeft(ExecutionTree pop) {
+		System.out.println("WRONG with "+pop);
+	}
+
+
+
+	@Override
+	public void setRight(ExecutionTree pop) {
+		System.out.println("WRONG with "+pop);
+	}
 }

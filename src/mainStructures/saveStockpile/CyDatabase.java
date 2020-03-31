@@ -11,21 +11,28 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 
-import mainStructures.dataFramework.Table_database;
+import mainStructures.dataFramework.TableDatabase;
 
 
 
 public class CyDatabase implements Serializable {
-    private HashMap<String, Table_database> myTables = new HashMap<String, Table_database>();
+    @Override
+	public String toString() {
+		return "CyDatabase [myTables=" + myTables + "]";
+	}
 
-    public void addTable (Table_database newTable) {
+
+
+	private HashMap<String, TableDatabase> myTables = new HashMap<String, TableDatabase>();
+
+    public void addTable (TableDatabase newTable) {
         myTables.put(newTable.getName(),newTable);
     }
-    public Table_database getTable(String tableName){
+    public TableDatabase getTable(String tableName){
         return myTables.get(tableName);
     }
 
-	public HashMap<String, Table_database> getMyTables() {
+	public HashMap<String, TableDatabase> getMyTables() {
 		return myTables;
 	}
 
@@ -34,8 +41,8 @@ public class CyDatabase implements Serializable {
 		try {
 			stream = new ObjectOutputStream(new FileOutputStream(fileName));
 			
-			Collection<Table_database> values = myTables.values();
-			for (Table_database table : values) {
+			Collection<TableDatabase> values = myTables.values();
+			for (TableDatabase table : values) {
 				stream.writeObject(table);
 			}
 			stream.close();
@@ -51,8 +58,8 @@ public class CyDatabase implements Serializable {
 	public void serializationRead(String fileName) {
 		try {
 			ObjectInputStream stream = new ObjectInputStream(new FileInputStream(fileName));
-			Table_database table = null;
-			while ((table = (Table_database) stream.readObject()) != null) {
+			TableDatabase table = null;
+			while ((table = (TableDatabase) stream.readObject()) != null) {
 				this.addTable(table);
 
 			}

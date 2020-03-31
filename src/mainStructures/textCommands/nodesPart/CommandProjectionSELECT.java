@@ -1,15 +1,15 @@
-package mainStructures.textExecutable.commands;
+package mainStructures.textCommands.nodesPart;
 
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitors.TreeVisitor;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.toolsModule.treeExcutable.TreeVisitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CommandProjectionSELECT extends CommandArchetype implements ExecutionTree{
+public class CommandProjectionSELECT extends CommandArchetypeNode {
     private ArrayList<String> wanted = new ArrayList<>();
     private HashMap<String,String> alias = new HashMap<>();
-    private String orderBY; //Name of the column.
+    private String[] orderBY = new String[2]; //Name of the column + ASC/DSC
     private boolean ifDISTINCT = false;
 
 

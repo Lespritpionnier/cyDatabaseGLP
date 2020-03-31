@@ -1,8 +1,8 @@
 package mainStructures.dataFramework.itemTypes;
 
-import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.ItemRow;
 
-public class DataText implements Item_row {
+public class DataText implements ItemRow {
     private String data;
 
     public DataText(String data) {

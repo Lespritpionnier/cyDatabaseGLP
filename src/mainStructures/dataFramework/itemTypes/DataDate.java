@@ -1,8 +1,8 @@
 package mainStructures.dataFramework.itemTypes;
 
-import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.ItemRow;
 
-public class DataDate implements Item_row {
+public class DataDate implements ItemRow {
     private String data;
 
     @Override

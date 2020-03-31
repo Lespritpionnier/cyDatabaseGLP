@@ -1,22 +1,23 @@
-package mainStructures.textExecutable;
+package mainStructures.toolsModule.treeExcutable;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
 
 import faceGraphical.showTree.elements.NodeGraphical;
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.commands.CommandArchetype;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandArchetypeNode;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 
-public class TreeBuilder {
+public class OldTreeBuilder {
     private ExecutionTree root;
     private ArrayList<ExecutionTree> stocking= new ArrayList<ExecutionTree>();
     
     
-    public TreeBuilder() {
+    public OldTreeBuilder() {
     	
     }
     
@@ -40,7 +41,7 @@ public class TreeBuilder {
     } 
     
     public String getName(ExecutionTree node) {
-    	TreeBuilder tree= new TreeBuilder();
+    	OldTreeBuilder tree= new OldTreeBuilder();
     	String name;
     	Class<? extends Object> test;
     	test=tree.makeTree(node);
@@ -132,14 +133,14 @@ public class TreeBuilder {
 		
 		
 		if(tab[0].equals("CommandProjectionSELECT")) {
-			CommandArchetype operation2= NodeGraphical.createOperation(
+			CommandArchetypeNode operation2= NodeGraphical.createOperation(
 				tab[0], null, null);
 			stack.push(operation2);
    		}
 		  
 		  
 		if(tab[1].equals("CommandSelectionWHERE")) {
-			CommandArchetype operation1 = NodeGraphical.createOperation(
+			CommandArchetypeNode operation1 = NodeGraphical.createOperation(
 				tab[1], null, null);
 			stack.push(operation1);
 		}
@@ -199,7 +200,7 @@ public class TreeBuilder {
 					// The right operand will be null for the moment.
 					ExecutionTree pop = stack.pop();
 					System.out.println("yessssssssss"+stack.pop());
-					CommandArchetype operation = NodeGraphical.createOperation(
+					CommandArchetypeNode operation = NodeGraphical.createOperation(
 							currentChar, pop, null);
 					System.out.println("noooooo"+operation);
 					System.out.println("noooooo"+operation.getLeft());
@@ -210,7 +211,7 @@ public class TreeBuilder {
 					
 						ExecutionTree leftOperand = stack.pop();
 						System.out.println("noo"+stack.pop());
-						CommandArchetype operation =NodeGraphical.createOperation(
+						CommandArchetypeNode operation =NodeGraphical.createOperation(
 								currentChar, leftOperand, null);
 						
 
@@ -227,7 +228,7 @@ public class TreeBuilder {
 		// The last step for merge the two arithmetic operations.
 		if (stack.size() == 2) {
 			ExecutionTree rightOperand = stack.pop();
-			CommandArchetype operation = (CommandArchetype) stack.peek();
+			CommandArchetypeNode operation = (CommandArchetypeNode) stack.peek();
 			operation.setRight(rightOperand);
 			System.out.println("228noooooo"+operation.getRight());
 		}
@@ -310,8 +311,8 @@ public class TreeBuilder {
 		String tab[]=formula.split(SEPARATEUR); 
 		
 		
-		Table_database operation2= NodeGraphical.createConstant(tab[4]);
-		Table_database operation3= NodeGraphical.createConstant(tab[2]);
+		TableDatabase operation2= NodeGraphical.createConstant(tab[4]);
+		TableDatabase operation3= NodeGraphical.createConstant(tab[2]);
 		
 		CommandJointJOIN operation1= (CommandJointJOIN) NodeGraphical.createOperation(
 				tab[3], operation2, operation3);

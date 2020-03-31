@@ -1,14 +1,15 @@
 package mainStructures.toolsModule.makeAnalysis;
 
-import mainStructures.dataFramework.Item_row;
-import mainStructures.dataFramework.Row_table;
-import mainStructures.dataFramework.Table_database;
+import mainStructures.dataFramework.ItemRow;
+import mainStructures.dataFramework.RowTable;
+import mainStructures.dataFramework.TableDatabase;
 import mainStructures.dataFramework.itemTypes.DataBit;
 import mainStructures.dataFramework.itemTypes.DataNumber;
 import mainStructures.dataFramework.itemTypes.DataText;
 import mainStructures.dataFramework.itemTypes.KeyForeign;
-import mainStructures.textExecutable.ExecutionTree;
+import mainStructures.textCommands.ExecutionTree;
 import mainStructures.toolsModule.makeAnalysis.comdAutomate.*;
+import mainStructures.toolsModule.treeExcutable.TreeBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ import java.util.regex.Pattern;
 public class SyntaxHandling {
 
 
-    HashMap<String, Table_database> myTables;
+    HashMap<String, TableDatabase> myTables;
 
 
     String request;
@@ -29,11 +30,11 @@ public class SyntaxHandling {
         return nodes;
     }
 
-    public SyntaxHandling(HashMap<String, Table_database> myTables, String request) {
+    public SyntaxHandling(HashMap<String, TableDatabase> myTables, String request) {
         this.myTables = myTables;
         this.request = request;
         String convertS = convertSyntax(request);
-        System.out.println(convertS);
+System.out.println(convertS);
         StringTokenizer handling = new StringTokenizer(convertS);
         makeNodes(handling);
     }
@@ -55,24 +56,27 @@ public class SyntaxHandling {
                 }
                 BoxSELECT boxSelect = new BoxSELECT(selectInfo);
                 nodes.add(boxSelect.makeNode());
-                System.out.println(nodes);
-            }
+System.out.println(selectInfo);
+     //       }
             
             
             if (temp.equals("FROM")) {
                 temp = handling.nextToken();
                 nodes.add(myTables.get(temp));
+                temp = handling.nextToken();
                 /*BoxFROM boxFrom = new BoxFROM(temp);
                 nodes.add(boxFrom.makeNode());
                 temp = handling.nextToken();*/
-                System.out.println(nodes);
+System.out.println("FROM"+nodes);
             }
             
             
-            while (temp.equals("JOIN")){
+            while (temp.equals("INNER")){
+System.out.println("Hello JOIN");
+            	temp = handling.nextToken();
             	BoxJOIN boxJoin = new BoxJOIN();
-                temp = handling.nextToken();
-                nodes.add(myTables.get(temp));
+                String joinTable = handling.nextToken();
+                
                 //////////////////CONDITION???
                 temp = handling.nextToken();
                 if(temp.equals("ON")){
@@ -81,8 +85,9 @@ public class SyntaxHandling {
                     boxJoin.addChoiceON(handling.nextToken());
                 }
                 nodes.add(boxJoin.makeNode());
+                nodes.add(myTables.get(joinTable));
                 temp = handling.nextToken();
-                System.out.println(nodes);
+System.out.println("JOIN BOX" + boxJoin);
             }
             
             
@@ -96,10 +101,14 @@ public class SyntaxHandling {
                     }
                 }
                 BoxWHERE boxWhere = new BoxWHERE(whereInfo);
-                nodes.add(boxWhere.makeNode());
-                System.out.println(nodes);
+                nodes.add(1,boxWhere.makeNode());
+System.out.println("105!!!!!!!!!!!!!!!!"+nodes);
+//System.out.println(nodes.get(nodes.size()-1).getClass().getName());
             }
-
+            
+            ExecutionTree root = TreeBuilder.buildTree(nodes);
+System.out.println(root.getClass().getName());
+            }
 
 
             //////////////////////////////////////////////////////////////////////////////////////////////////CREAT
@@ -144,7 +153,7 @@ System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                 	
                     infoDatatype.put(keyHT.get(index) , valueHT.get(index));
                 }
-                Table_database yeahTable = new Table_database(nameNewTable,infoDatatype);
+                TableDatabase yeahTable = new TableDatabase(nameNewTable,infoDatatype);
 
                     while (!temp.equals("FOREIGN") && handling.hasMoreTokens()){ temp = handling.nextToken(); }
                         if(temp.equals("FOREIGN")){
@@ -176,7 +185,7 @@ System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                     while (!temp.equals("VALUES")){toNameCol.add(temp); temp = handling.nextToken();}
                 ArrayList<String> newDataCol = new ArrayList<>();
                     while (handling.hasMoreTokens()){temp = handling.nextToken(); newDataCol.add(temp); }
-                Row_table welcome = new Row_table();
+                RowTable welcome = new RowTable();
                     for (int index=0 ; index<toNameCol.size() ; index++){
                     	
 System.out.println("begain " + toNameCol.get(index));
@@ -194,7 +203,7 @@ System.out.println(myTables);
         }
     }
 
-    private Item_row makeItem(String columnsType, String value) {
+    private ItemRow makeItem(String columnsType, String value) {
 System.out.println(columnsType +"!!!!"+ value);
         switch (columnsType){
             case "BIT": {

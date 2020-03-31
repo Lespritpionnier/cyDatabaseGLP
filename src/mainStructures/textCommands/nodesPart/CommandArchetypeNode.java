@@ -1,21 +1,21 @@
-package mainStructures.textExecutable.commands;
+package mainStructures.textCommands.nodesPart;
 
-import mainStructures.textExecutable.ExecutionTree;
+import mainStructures.textCommands.ExecutionTree;
 
-public abstract class CommandArchetype implements ExecutionTree{
+public abstract class CommandArchetypeNode implements ExecutionTree{
     private ExecutionTree left;
     private ExecutionTree right;
 
-    public CommandArchetype() {
+    public CommandArchetypeNode() {
         left = null;
         right = null;
     }
 
-    public CommandArchetype(ExecutionTree left, ExecutionTree right) {
+    public CommandArchetypeNode(ExecutionTree left, ExecutionTree right) {
         this.left = left;
         this.right = right;
     }
-    public CommandArchetype(ExecutionTree only) {
+    public CommandArchetypeNode(ExecutionTree only) {
         left = only;
         right = null;
     }

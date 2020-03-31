@@ -1,4 +1,4 @@
-package gui;
+package faceGraphical.userInterface;
 
 public class Main {
 

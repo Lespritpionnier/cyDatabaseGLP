@@ -1,7 +1,7 @@
 package mainStructures.dataFramework;
 
 
-public interface Item_row {
+public interface ItemRow {
 
 
 

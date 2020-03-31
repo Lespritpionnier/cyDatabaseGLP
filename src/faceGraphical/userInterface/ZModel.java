@@ -1,4 +1,4 @@
-package gui;
+package faceGraphical.userInterface;
 
 import java.awt.Component;
 
@@ -27,19 +27,19 @@ public class ZModel extends AbstractTableModel{
 	    return this.data.length;
 	  }
 
-	  //Retourne la valeur à l'emplacement spécifié
+	  //Retourne la valeur ? l'emplacement spécifi?
 	  public Object getValueAt(int row, int col) {
 	    return this.data[row][col];
 	  }            
 	  
-	  //Retourne le titre de la colonne à l'indice spécifié
+	  //Retourne le titre de la colonne ? l'indice spécifi?
 	  public String getColumnName(int col){
 		  return this.title[col];
 	  }
 	  
 	  //Retourne la classe de la donnée de la colonne
 	  public Class getColumnClass(int col){
-		  //On retourne le type de la cellule à la colonne demandée
+		  //On retourne le type de la cellule ? la colonne demandée
 		  //On se moque de la puisque les types de donnée sont les même 
 		  //quelle que soit la ligne
 		  //On choisit donc la première ligne

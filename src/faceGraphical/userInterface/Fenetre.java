@@ -1,4 +1,4 @@
-package gui;
+package faceGraphical.userInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

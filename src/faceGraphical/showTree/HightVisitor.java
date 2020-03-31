@@ -1,11 +1,11 @@
 package faceGraphical.showTree;
 
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.commands.CommandArchetype;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
-import mainStructures.toolsModule.pairVisitors.TreeVisitor;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandArchetypeNode;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
+import mainStructures.toolsModule.treeExcutable.TreeVisitor;
 
 public class HightVisitor implements TreeVisitor<Void> {
 	
@@ -25,7 +25,7 @@ public class HightVisitor implements TreeVisitor<Void> {
 
 	
 
-	private void processCommand(CommandArchetype node) {
+	private void processCommand(CommandArchetypeNode node) {
 		currentHeight++;
 		node.getLeft().accept(this);
 		node.getRight().accept(this);
@@ -53,7 +53,7 @@ public class HightVisitor implements TreeVisitor<Void> {
 	
 
 	@Override
-	public Void visit(Table_database node) {
+	public Void visit(TableDatabase node) {
 		processTable();
 		return null;
 	}

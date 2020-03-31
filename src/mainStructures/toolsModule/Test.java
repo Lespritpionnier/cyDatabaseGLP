@@ -2,14 +2,14 @@ package mainStructures.toolsModule;
 
 import java.util.ArrayList;
 
-import mainStructures.dataFramework.Table_database;
+import mainStructures.dataFramework.TableDatabase;
 import mainStructures.saveStockpile.CyDatabase;
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.textExecutable.TreeBuilder;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 import mainStructures.toolsModule.makeAnalysis.SyntaxHandling;
+import mainStructures.toolsModule.treeExcutable.OldTreeBuilder;
 
 public class Test {
 	public static void main(String[] args){
@@ -20,9 +20,9 @@ public class Test {
 		CommandJointJOIN join2=new CommandJointJOIN();*/
 	
 		
-		Table_database tab1=new Table_database("tab1", null);
-		Table_database tab2=new Table_database("tab2", null);
-		Table_database tab3=new Table_database("tab3", null);
+		TableDatabase tab1=new TableDatabase("tab1", null);
+		TableDatabase tab2=new TableDatabase("tab2", null);
+		TableDatabase tab3=new TableDatabase("tab3", null);
 		
 		CyDatabase base=new CyDatabase();
 		base.addTable(tab1);
@@ -41,20 +41,9 @@ public class Test {
 	
 
 
-		/*
-		String select = "SELECT c.nom, c.prenom " +
-				" FROM  (client AS c INNER JOIN commande AS co " +
-				" ON (c.id_client = co.id_client)) " +
-				" INNER JOIN voiture AS v " +
-				" ON (co.id_voiture = v.id_voiture) " +
-				" WHERE v.marque = \"Peugeot\" AND co.quantite >= 20; ";
-		SyntaxHandling selectSQL = new SyntaxHandling(myDB.getMyTables(),select);
-*/
-
 		
 		
 		
-
 		String creat = "CREATE TABLE adresse(" +
 				"id_adresse AUTOINCREMENT, " +
 				"numero TEXT, " +
@@ -65,6 +54,30 @@ public class Test {
 		SyntaxHandling creatSQL = new SyntaxHandling(myDB.getMyTables(),creat);
 		System.out.println(myDB.toString());
 
+		
+		
+		String creat2 = "CREATE TABLE commande(" +
+				"id_commande AUTOINCREMENT, " +
+				"numero TEXT, " +
+				"nom TEXT, " +
+				"ville TEXT, " +
+				"code_postal TEXT, " +
+				"PRIMARY KEY(id_commande));";
+		SyntaxHandling creatSQL2 = new SyntaxHandling(myDB.getMyTables(),creat2);
+		System.out.println(myDB.toString());
+		
+		
+		
+		String creat3 = "CREATE TABLE voiture(" +
+				"id_voiture AUTOINCREMENT, " +
+				"numero TEXT, " +
+				"nom TEXT, " +
+				"ville TEXT, " +
+				"code_postal TEXT, " +
+				"PRIMARY KEY(id_voiture));";
+		SyntaxHandling creatSQL3 = new SyntaxHandling(myDB.getMyTables(),creat3);
+		System.out.println(myDB.toString());
+		/*
 
 		String insert1 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
 				"VALUES (\"2\", \"Jean\", \"Paris\", \"75015\") ;";
@@ -83,6 +96,18 @@ public class Test {
 		SyntaxHandling insertSQL3 = new SyntaxHandling(myDB.getMyTables(),insert3);
 		System.out.println(myDB.getTable("adresse"));
 
+		
+ */
+		
+		String select = "SELECT c.nom, c.prenom " +
+				" FROM  (adresse AS c INNER JOIN commande AS co " +
+				" ON (c.id_client = co.id_client)) " +
+				" INNER JOIN voiture AS v " +
+				" ON (co.id_voiture = v.id_voiture) " +
+				" WHERE v.marque = \"Peugeot\" AND co.quantite >= 20; ";
+		SyntaxHandling selectSQL = new SyntaxHandling(myDB.getMyTables(),select);
+		
+		/*
 
 
 

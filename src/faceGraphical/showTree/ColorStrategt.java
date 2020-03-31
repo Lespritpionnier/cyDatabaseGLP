@@ -2,10 +2,10 @@ package faceGraphical.showTree;
 
 import java.awt.Graphics;
 
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 
 public interface ColorStrategt {
 
@@ -15,7 +15,7 @@ public interface ColorStrategt {
 
 	void setColor(Graphics graphics, CommandSelectionWHERE node);
 
-	void setColor(Graphics graphics, Table_database node);
+	void setColor(Graphics graphics, TableDatabase node);
 
 	void setLineColor(Graphics graphics);
 	

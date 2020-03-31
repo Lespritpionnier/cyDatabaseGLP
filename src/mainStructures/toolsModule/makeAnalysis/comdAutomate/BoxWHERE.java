@@ -1,7 +1,7 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 
 import java.util.ArrayList;
 

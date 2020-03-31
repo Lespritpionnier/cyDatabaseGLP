@@ -2,13 +2,14 @@ package mainStructures.dataFramework;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
-public class Row_table extends HashMap<String, Item_row>{
+public class RowTable extends LinkedHashMap<String, ItemRow>{
     /**
      * The keys of this HashMap are the names of the columns in the table
      */
-    public Row_table() {
+    public RowTable() {
     }
 
 

@@ -1,7 +1,7 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 
 import java.util.ArrayList;
 
@@ -26,6 +26,12 @@ public class BoxJOIN{
         join.setCondition(choiceON);
         return join;
     }
+
+	@Override
+	public String toString() {
+		return choiceON.toString();
+	}
+    
 
 
   /*!!!!!!!!!!!

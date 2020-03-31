@@ -2,12 +2,12 @@ package faceGraphical.showTree;
 
 
 
-import mainStructures.dataFramework.Table_database;
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.textExecutable.commands.CommandJointJOIN;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
-import mainStructures.textExecutable.commands.CommandSelectionWHERE;
-import mainStructures.toolsModule.pairVisitors.TreeVisitor;
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandJointJOIN;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
+import mainStructures.toolsModule.treeExcutable.TreeVisitor;
 
 public class NodeCountVisitor implements TreeVisitor<Integer>{
 	private int count;
@@ -47,7 +47,7 @@ public class NodeCountVisitor implements TreeVisitor<Integer>{
 	}
 
 	@Override
-	public Integer visit(Table_database node) {
+	public Integer visit(TableDatabase node) {
 		processTableNode(node);
 		return null;
 	}

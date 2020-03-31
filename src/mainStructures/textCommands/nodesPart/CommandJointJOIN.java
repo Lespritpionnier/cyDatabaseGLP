@@ -1,12 +1,12 @@
-package mainStructures.textExecutable.commands;
+package mainStructures.textCommands.nodesPart;
 
 import mainStructures.dataFramework.itemTypes.KeyForeign;
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.toolsModule.pairVisitors.TreeVisitor;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.toolsModule.treeExcutable.TreeVisitor;
 
 import java.util.ArrayList;
 
-public class CommandJointJOIN extends CommandArchetype implements ExecutionTree {
+public class CommandJointJOIN extends CommandArchetypeNode {
     KeyForeign choiceON;
     ArrayList<String> condition;
 
