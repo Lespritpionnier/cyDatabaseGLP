@@ -1,9 +1,9 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-import mainStructures.textExecutable.ExecutionTree;
-
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import mainStructures.textCommands.ExecutionTree;
 
 public class BoxDELETE extends AutoBoxArchetype {
     public BoxDELETE(ArrayList<ExecutionTree> nodes, StringTokenizer remain) {

@@ -1,8 +1,8 @@
 package mainStructures.dataFramework.itemTypes;
 
-import mainStructures.dataFramework.Item_row;
+import mainStructures.dataFramework.ItemRow;
 
-public class DataNumber implements Item_row {
+public class DataNumber implements ItemRow {
     private Double data;
 
     public DataNumber(String value) {

@@ -1,7 +1,7 @@
 package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 
-import mainStructures.textExecutable.ExecutionTree;
-import mainStructures.textExecutable.commands.CommandProjectionSELECT;
+import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
