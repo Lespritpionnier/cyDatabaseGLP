@@ -9,8 +9,8 @@ public class DataBit implements ItemRow {
         SetValue(value);
     }
 
-    public Boolean getData() {
-        return data;
+    public String getData() {
+        return data.toString();
     }
 
     public void setData(Boolean data) {

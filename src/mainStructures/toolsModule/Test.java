@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import mainStructures.dataFramework.TableDatabase;
 import mainStructures.saveStockpile.CyDatabase;
-import mainStructures.textCommands.ExecutionTree;
 import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 import mainStructures.toolsModule.makeAnalysis.SyntaxHandling;
 import mainStructures.toolsModule.treeExcutable.OldTreeBuilder;
 
@@ -20,37 +20,37 @@ public class Test {
 		CommandJointJOIN join2=new CommandJointJOIN();*/
 	
 		
-		TableDatabase tab1=new TableDatabase("tab1", null);
-		TableDatabase tab2=new TableDatabase("tab2", null);
-		TableDatabase tab3=new TableDatabase("tab3", null);
-		
-		CyDatabase base=new CyDatabase();
-		base.addTable(tab1);
-		base.addTable(tab2);
-		base.addTable(tab3);
-		 
-		base.serializationSave("fichier.ser");
-		base.serializationRead("fichier.ser");
-		
+//		TableDatabase tab1=new TableDatabase("tab1", null);
+//		TableDatabase tab2=new TableDatabase("tab2", null);
+//		TableDatabase tab3=new TableDatabase("tab3", null);
+//		
+//		CyDatabase base=new CyDatabase();
+//		base.addTable(tab1);
+//		base.addTable(tab2);
+//		base.addTable(tab3);
+//		 
+//		base.serializationSave("fichier.ser");
+//		base.serializationRead("fichier.ser");
+//		
 		
 		
 		CyDatabase myDB = new CyDatabase();
 		
-
-
 	
 
-
+System.out.println("NOW CREATE TABLE");
 		
 		
 		
 		String creat = "CREATE TABLE adresse(" +
 				"id_adresse AUTOINCREMENT, " +
-				"numero TEXT, " +
-				"nom TEXT, " +
-				"ville TEXT, " +
-				"code_postal TEXT, " +
-				"PRIMARY KEY(id_adresse));";
+				"id_commande LONG," +
+				"numero1 TEXT, " +
+				"nom1 TEXT, " +
+				"ville1 TEXT, " +
+				"code_postal1 TEXT, "
+				+ "PRIMARY KEY(id_adresse),"
+				+ "FOREIGN KEY(id_commande) REFERENCES commande(id_commande);";
 		SyntaxHandling creatSQL = new SyntaxHandling(myDB.getMyTables(),creat);
 		System.out.println(myDB.toString());
 
@@ -58,11 +58,13 @@ public class Test {
 		
 		String creat2 = "CREATE TABLE commande(" +
 				"id_commande AUTOINCREMENT, " +
-				"numero TEXT, " +
-				"nom TEXT, " +
-				"ville TEXT, " +
-				"code_postal TEXT, " +
-				"PRIMARY KEY(id_commande));";
+				"id_voiture LONG, " +
+				"numero2 TEXT, " +
+				"nom2 TEXT, " +
+				"ville2 TEXT, " +
+				"code_postal2 TEXT, " +
+				"PRIMARY KEY(id_commande)," + 
+				"FOREIGN KEY(id_voiture) REFERENCES voiture(id_voiture));";
 		SyntaxHandling creatSQL2 = new SyntaxHandling(myDB.getMyTables(),creat2);
 		System.out.println(myDB.toString());
 		
@@ -70,44 +72,82 @@ public class Test {
 		
 		String creat3 = "CREATE TABLE voiture(" +
 				"id_voiture AUTOINCREMENT, " +
-				"numero TEXT, " +
-				"nom TEXT, " +
-				"ville TEXT, " +
-				"code_postal TEXT, " +
+				"numero3 TEXT, " +
+				"nom3 TEXT, " +
+				"ville3 TEXT, " +
+				"code_postal3 TEXT, " +
 				"PRIMARY KEY(id_voiture));";
 		SyntaxHandling creatSQL3 = new SyntaxHandling(myDB.getMyTables(),creat3);
 		System.out.println(myDB.toString());
-		/*
-
-		String insert1 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
-				"VALUES (\"2\", \"Jean\", \"Paris\", \"75015\") ;";
-		SyntaxHandling insertSQL1 = new SyntaxHandling(myDB.getMyTables(),insert1);
-		System.out.println(myDB.getTable("adresse"));
-
-
-		String insert2 = "INSERT INTO adresse (numero, nom, ville, code_postal) " +
-				"VALUES (\"3\", \"Michel\", \"Paris\", \"75005\") ;";
-		SyntaxHandling insertSQL2 = new SyntaxHandling(myDB.getMyTables(),insert2);
-		System.out.println(myDB.getTable("adresse"));
-
-		System.out.println("wesh?");
-		String insert3 = "INSERT INTO adresse (numero, nom, ville, code_postal)" +
-				"VALUES (\"8\", \"MACRON\", \"Cergy\", \"95000\") ;";
-		SyntaxHandling insertSQL3 = new SyntaxHandling(myDB.getMyTables(),insert3);
-		System.out.println(myDB.getTable("adresse"));
-
 		
- */
+System.out.println("NOW INSERT INTO adresse");
+
+		String insert1 = "INSERT INTO adresse (id_commande, numero1, nom1, ville1, code_postal1) " +
+				"VALUES (3, \"2\", \"Jean\", \"Paris\", \"75015\") ;";
+		SyntaxHandling insertSQL1 = new SyntaxHandling(myDB.getMyTables(),insert1);
+//System.out.println(myDB.getTable("adresse"));
+
+
+		String insert2 = "INSERT INTO adresse (id_commande, numero1, nom1, ville1, code_postal1) " +
+				"VALUES (1, \"3\", \"Michel\", \"Paris\", \"75005\") ;";
+		SyntaxHandling insertSQL2 = new SyntaxHandling(myDB.getMyTables(),insert2);
+//System.out.println(myDB.getTable("adresse"));
+
+		String insert3 = "INSERT INTO adresse (id_commande, numero1, nom1, ville1, code_postal1)" +
+				"VALUES (2, \"8\", \"MACRON\", \"Cergy\", \"95000\") ;";
+		SyntaxHandling insertSQL3 = new SyntaxHandling(myDB.getMyTables(),insert3);
+System.out.println(myDB.getTable("adresse"));
+
+System.out.println("NOW INSERT INTO commande");
+		
+		String insert4 = "INSERT INTO commande (id_voiture, numero2, nom2, ville2, code_postal2) " +
+				"VALUES (2, \"22\", \"AJean\", \"ParisA\", \"75115\") ;";
+		SyntaxHandling insertSQL4 = new SyntaxHandling(myDB.getMyTables(),insert4);
+//System.out.println(myDB.getTable("commande"));
+
+
+		String insert5 = "INSERT INTO commande (id_voiture, numero2, nom2, ville2, code_postal2) " +
+				"VALUES (3, \"33\", \"AMichel\", \"ParisA\", \"75105\") ;";
+		SyntaxHandling insertSQL5 = new SyntaxHandling(myDB.getMyTables(),insert5);
+//System.out.println(myDB.getTable("commande"));
+
+		String insert6 = "INSERT INTO commande (id_voiture, numero2, nom2, ville2, code_postal2)" +
+				"VALUES (1, \"88\", \"AMACRON\", \"CergyA\", \"95100\") ;";
+		SyntaxHandling insertSQL6 = new SyntaxHandling(myDB.getMyTables(),insert6);
+System.out.println(myDB.getTable("commande"));
+		
+		
+System.out.println("NOW INSERT INTO voiture");
+		
+		String insert7 = "INSERT INTO voiture (numero3, nom3, ville3, code_postal3) " +
+				"VALUES (2, \"222\", \"BJean\", \"ParisB\", \"75915\") ;";
+		SyntaxHandling insertSQL7 = new SyntaxHandling(myDB.getMyTables(),insert7);
+//System.out.println(myDB.getTable("voiture"));
+		
+		
+		String insert8 = "INSERT INTO voiture (numero3, nom3, ville3, code_postal3) " +
+				"VALUES (3, \"333\", \"BMichel\", \"ParisB\", \"75905\") ;";
+		SyntaxHandling insertSQL8 = new SyntaxHandling(myDB.getMyTables(),insert8);
+//System.out.println(myDB.getTable("voiture"));
+		
+		String insert9 = "INSERT INTO voiture (numero3, nom3, ville3, code_postal3)" +
+				"VALUES (1, \"888\", \"BMACRON\", \"CergyB\", \"95900\") ;";
+		SyntaxHandling insertSQL9 = new SyntaxHandling(myDB.getMyTables(),insert9);
+System.out.println(myDB.getTable("voiture"));
+		
+		
+		
+System.out.println("NOW SELECT TREE");
 		
 		String select = "SELECT c.nom, c.prenom " +
 				" FROM  (adresse AS c INNER JOIN commande AS co " +
-				" ON (c.id_client = co.id_client)) " +
+				" ON (c.id_commande = co.id_commande)) " +
 				" INNER JOIN voiture AS v " +
 				" ON (co.id_voiture = v.id_voiture) " +
 				" WHERE v.marque = \"Peugeot\" AND co.quantite >= 20; ";
 		SyntaxHandling selectSQL = new SyntaxHandling(myDB.getMyTables(),select);
 		
-		/*
+		
 
 
 

@@ -6,11 +6,11 @@ import java.util.Stack;
 
 import faceGraphical.showTree.NodeGraphical;
 import mainStructures.dataFramework.TableDatabase;
-import mainStructures.textCommands.ExecutionTree;
 import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 import mainStructures.textCommands.nodesPart.CommandArchetypeNode;
 import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 
 public class OldTreeBuilder {
     private ExecutionTree root;

@@ -1,5 +1,6 @@
 package mainStructures.textCommands;
 
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
 
 public class CommandModificationSET implements ExecutionTree {

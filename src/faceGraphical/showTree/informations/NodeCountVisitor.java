@@ -3,10 +3,10 @@ package faceGraphical.showTree.informations;
 
 
 import mainStructures.dataFramework.TableDatabase;
-import mainStructures.textCommands.ExecutionTree;
 import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
 
 public class NodeCountVisitor implements ParsingVisitor<Integer> {

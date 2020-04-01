@@ -7,12 +7,14 @@ import mainStructures.dataFramework.itemTypes.DataBit;
 import mainStructures.dataFramework.itemTypes.DataNumber;
 import mainStructures.dataFramework.itemTypes.DataText;
 import mainStructures.dataFramework.itemTypes.KeyForeign;
-import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 import mainStructures.toolsModule.makeAnalysis.comdAutomate.*;
+import mainStructures.toolsModule.treeExcutable.ExecutiveVisitor;
 import mainStructures.toolsModule.treeExcutable.TreeBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
@@ -34,7 +36,7 @@ public class SyntaxHandling {
         this.myTables = myTables;
         this.request = request;
         String convertS = convertSyntax(request);
-System.out.println(convertS);
+//System.out.println(convertS);
         StringTokenizer handling = new StringTokenizer(convertS);
         makeNodes(handling);
     }
@@ -56,7 +58,7 @@ System.out.println(convertS);
                 }
                 BoxSELECT boxSelect = new BoxSELECT(selectInfo);
                 nodes.add(boxSelect.makeNode());
-System.out.println(selectInfo);
+//System.out.println(selectInfo);
      //       }
             
             
@@ -67,12 +69,12 @@ System.out.println(selectInfo);
                 /*BoxFROM boxFrom = new BoxFROM(temp);
                 nodes.add(boxFrom.makeNode());
                 temp = handling.nextToken();*/
-System.out.println("FROM"+nodes);
+//System.out.println("FROM"+nodes);
             }
             
             
             while (temp.equals("INNER")){
-System.out.println("Hello JOIN");
+//System.out.println("Hello JOIN");
             	temp = handling.nextToken();
             	BoxJOIN boxJoin = new BoxJOIN();
                 String joinTable = handling.nextToken();
@@ -80,14 +82,18 @@ System.out.println("Hello JOIN");
                 //////////////////CONDITION???
                 temp = handling.nextToken();
                 if(temp.equals("ON")){
-                    boxJoin.addChoiceON(handling.nextToken());
-                    boxJoin.addChoiceON(handling.nextToken());
-                    boxJoin.addChoiceON(handling.nextToken());
+                	temp = handling.nextToken();
+                	int knife = temp.indexOf(".")+1;
+                	temp = temp.substring(knife, temp.length());
+//System.out.println("VOICI CONDITION ON "+temp);
+                    boxJoin.addChoiceON(temp);
+                    temp = handling.nextToken();
+                    temp = handling.nextToken();
                 }
                 nodes.add(boxJoin.makeNode());
                 nodes.add(myTables.get(joinTable));
                 temp = handling.nextToken();
-System.out.println("JOIN BOX" + boxJoin);
+//System.out.println("JOIN BOX" + boxJoin);
             }
             
             
@@ -102,12 +108,15 @@ System.out.println("JOIN BOX" + boxJoin);
                 }
                 BoxWHERE boxWhere = new BoxWHERE(whereInfo);
                 nodes.add(1,boxWhere.makeNode());
-System.out.println("105!!!!!!!!!!!!!!!!"+nodes);
+//System.out.println("105!!!!!!!!!!!!!!!!"+nodes);
 //System.out.println(nodes.get(nodes.size()-1).getClass().getName());
             }
             
             ExecutionTree root = TreeBuilder.buildTree(nodes);
-System.out.println(root.getClass().getName());
+System.out.println(root.getFormulaRA());
+			ExecutiveVisitor sucess = new ExecutiveVisitor();
+			TableDatabase resultT = root.accept(sucess);
+System.out.println("WE ARE THE CHAMPI "+resultT);
             }
 
 
@@ -118,12 +127,12 @@ System.out.println(root.getClass().getName());
 
                 ArrayList<String> keyHT = new ArrayList<>();
                 ArrayList<String> valueHT = new ArrayList<>();
-                HashMap<String,String> infoDatatype = new HashMap<>();
+                LinkedHashMap<String,String> infoDatatype = new LinkedHashMap<>();
 
 
                 temp = handling.nextToken();
                 int wish = 2;
-System.out.println(temp +"  "+ wish);
+//System.out.println(temp +"  "+ wish);
                     do { if(wish%2==0){
                         	keyHT.add(temp);
                     } else {
@@ -136,7 +145,7 @@ System.out.println(temp +"  "+ wish);
                             temp = handling.nextToken();
                             wish++;
                         }
-System.out.println(temp +"  "+ wish);
+//System.out.println(temp +"  "+ wish);
 						if(wish%2!=0) {
                     	  valueHT.add(temp);
 						}else {
@@ -144,15 +153,16 @@ System.out.println(temp +"  "+ wish);
 						}
                     }
                         wish++;
+//System.out.println(temp +"  "+ wish);
                         temp = handling.nextToken();
                     }while (!temp.equals("PRIMARY"));
 
                 for (int index=0 ; index<keyHT.size();index++) {
                 	
-System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                 	
                     infoDatatype.put(keyHT.get(index) , valueHT.get(index));
                 }
+System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                 TableDatabase yeahTable = new TableDatabase(nameNewTable,infoDatatype);
 
                     while (!temp.equals("FOREIGN") && handling.hasMoreTokens()){ temp = handling.nextToken(); }
@@ -160,15 +170,18 @@ System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                             HashMap<String,String> foreignKeys = new HashMap<>();
                             while (temp.equals("FOREIGN")) {
                                 temp = handling.nextToken();
-                                String nameTableF = handling.nextToken();
-                                temp = handling.nextToken();
                                 String nameFoKey = handling.nextToken();
+//System.out.println("FOREIGN "+nameFoKey);
+                                temp = handling.nextToken();
+                                String nameTableF = handling.nextToken();
                                 foreignKeys.put(nameFoKey, nameTableF);
+                                temp = handling.nextToken();
                                 if (handling.hasMoreTokens()) {
                                     temp = handling.nextToken();
                                 }
                             }
                             yeahTable.setForeignKeys(foreignKeys);
+//System.out.println(foreignKeys);
                         }
                 myTables.put(nameNewTable,yeahTable);
             }
@@ -188,11 +201,11 @@ System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                 RowTable welcome = new RowTable();
                     for (int index=0 ; index<toNameCol.size() ; index++){
                     	
-System.out.println("begain " + toNameCol.get(index));
-System.out.println(nameToTable);
-System.out.println(newDataCol.get(index)+" end");
-System.out.println(myTables.get(nameToTable));
-System.out.println(myTables);
+//System.out.println("begain " + toNameCol.get(index));
+//System.out.println(nameToTable);
+//System.out.println(newDataCol.get(index)+" end");
+//System.out.println(myTables.get(nameToTable));
+//System.out.println(myTables);
                     	
                         welcome.put(toNameCol.get(index),
                                 makeItem(
@@ -207,7 +220,7 @@ System.out.println(myTables);
     }
 
     private ItemRow makeItem(String columnsType, String value) {
-System.out.println(columnsType +"!!!!"+ value);
+//System.out.println(columnsType +"!!!!"+ value);
         switch (columnsType){
             case "BIT": {
                 DataBit result = new DataBit(value);
@@ -237,7 +250,8 @@ System.out.println(columnsType +"!!!!"+ value);
 
     //This method needs to be improved a lot
     public String convertSyntax (String originalCommand){
-        String onlyWords = (originalCommand.toString().replaceFirst(";", "")).replaceAll(",", "");
+        String onlyWords = (originalCommand.toString().replaceFirst(";", "")).replaceAll(",", " ");
+//System.out.println(onlyWords);
         String withoutAS = onlyWords.replaceAll(" AS ","AS").replaceAll("\\("," ").replaceAll("\\)"," ").replaceAll(","," ").replaceAll(";","").replaceAll("\"","");
         ArrayList<String> offAS = new ArrayList<>();
         StringTokenizer checkAS = new StringTokenizer(withoutAS);
@@ -256,7 +270,7 @@ System.out.println(columnsType +"!!!!"+ value);
             withoutAS = (withoutAS.replace(nickName + ".", tableName + ".")).replaceAll(offNickName, tableName);
 //            withoutAS =withoutAS.replaceAll("\\("," ").replaceAll("\\)"," ").replaceAll(","," ").replaceAll(";","").replaceAll("\"","");
         }
- //      System.out.println(withoutAS);
+//System.out.println(withoutAS);
         return withoutAS;
     }
 

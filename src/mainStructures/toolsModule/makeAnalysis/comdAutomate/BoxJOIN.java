@@ -6,7 +6,7 @@ import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 import java.util.ArrayList;
 
 public class BoxJOIN{
-    private ArrayList<String> choiceON = new ArrayList<>();
+    private String choiceON ;
 
 //    public BoxJOIN(String name){
 //        super(name);
@@ -18,7 +18,7 @@ public class BoxJOIN{
 	}
 
 	public void addChoiceON(String choice) {
-        choiceON.add(choice);
+        choiceON=choice;
     }
 
     public CommandJointJOIN makeNode() {

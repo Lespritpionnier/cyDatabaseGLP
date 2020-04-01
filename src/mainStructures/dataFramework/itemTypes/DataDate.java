@@ -14,5 +14,11 @@ public class DataDate implements ItemRow {
         data=value;
     }
 
+	@Override
+	public String getData() {
+		// TODO Auto-generated method stub
+		return data;
+	}
+
 
 }

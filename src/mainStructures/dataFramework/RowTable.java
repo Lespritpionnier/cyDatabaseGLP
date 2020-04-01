@@ -9,8 +9,25 @@ public class RowTable extends LinkedHashMap<String, ItemRow>{
     /**
      * The keys of this HashMap are the names of the columns in the table
      */
-    public RowTable() {
+    	
+    	@Override
+        public ItemRow put(String key, ItemRow value) {
+    		ItemRow newV = value;
+            if (!containsKey(key)) {
+            	return super.put(key, newV);
+            }
+			return null;
+        }
+    
+    	
     }
+    	
+//    	@Override
+//        public ItemRow put(String key, ItemRow value) {
+//            return putVal(hash(key), key, value, true, true);
+//        }
+//        
+    
 
 
 //	public java.lang.String toString() {
@@ -49,4 +66,4 @@ public class RowTable extends LinkedHashMap<String, ItemRow>{
     }
 
  */
-}
+

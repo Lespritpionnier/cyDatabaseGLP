@@ -9,8 +9,8 @@ public class DataNumber implements ItemRow {
         data = Double.parseDouble(value);
     }
 
-    public Double getData() {
-        return data;
+    public String getData() {
+        return data.toString();
     }
 
     public void setData(Double data) {

@@ -3,7 +3,7 @@ package mainStructures.toolsModule.makeAnalysis.comdAutomate;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 
 public abstract class AutoBoxArchetype {
     private ArrayList<ExecutionTree> nodes;

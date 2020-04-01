@@ -1,6 +1,5 @@
 package mainStructures.textCommands.nodesPart;
 
-import mainStructures.textCommands.ExecutionTree;
 import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
 
 import java.util.ArrayList;
@@ -79,22 +78,12 @@ public class CommandProjectionSELECT extends CommandArchetypeNode {
 */
 
     @Override
-    public ExecutionTree getLeft() {
-        return null;
-    }
-
-    @Override
-    public ExecutionTree getRight() {
-        return null;
-    }
-
-    @Override
     public String getFormulaRA() {
         return "Proj("+right.getFormulaRA()+")";
     }
 
     @Override
-    public <T> T accept(ParsingVisitor<T> visitor) {
-        return null;
-    }
+	public <T> T accept(ParsingVisitor<T> visitor) {
+		return visitor.visit(this);
+	}
 }

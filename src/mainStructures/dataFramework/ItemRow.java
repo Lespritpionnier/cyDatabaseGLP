@@ -1,9 +1,10 @@
 package mainStructures.dataFramework;
 
+import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 
 public interface ItemRow {
 
-
+	String getData();
 
 
 

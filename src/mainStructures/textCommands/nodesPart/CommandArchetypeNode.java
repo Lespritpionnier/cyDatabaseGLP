@@ -1,10 +1,8 @@
 package mainStructures.textCommands.nodesPart;
 
-import mainStructures.textCommands.ExecutionTree;
-
 public abstract class CommandArchetypeNode implements ExecutionTree{
-    private ExecutionTree left;
-    private ExecutionTree right;
+    protected ExecutionTree left;
+    protected ExecutionTree right;
 
     public CommandArchetypeNode() {
         left = null;

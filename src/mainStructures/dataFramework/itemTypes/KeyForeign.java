@@ -9,4 +9,9 @@ public class KeyForeign extends KeyPrimary {
     public KeyForeign(String data) {
         super(Long.parseLong(data));
     }
+
+	@Override
+	public String toString() {
+		return "KeyForeign:{"  + getData() +'}';
+	}
 }

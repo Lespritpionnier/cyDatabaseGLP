@@ -2,24 +2,25 @@ package mainStructures.dataFramework;
 
 import mainStructures.dataFramework.exceptions.TableFormatProblemException;
 import mainStructures.dataFramework.itemTypes.KeyPrimary;
-import mainStructures.textCommands.ExecutionTree;
+import mainStructures.textCommands.nodesPart.ExecutionTree;
 import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 
 public class TableDatabase extends ArrayList<RowTable> implements ExecutionTree {
  //   private KeyPrimary keyCurrent;
     private String tableName;
-    private HashMap<String,String> infoDatatype;
+    private LinkedHashMap<String,String> infoDatatype;
     private String primaryKey;
     private HashMap<String,String> foreignKeys;
     private int nextKey; //MAYBE RELATE TO SIZE()
     //private ArrayList<Integer> indexRanked = new ArrayList<>()
 
 
-    public TableDatabase(String tableName, HashMap<String,String> infoDatatype) {
+    public TableDatabase(String tableName, LinkedHashMap<String,String> infoDatatype) {
        this.tableName=tableName;
        this.infoDatatype = infoDatatype;
        nextKey=1; //MAYBE RELATE TO SIZE()
@@ -66,6 +67,7 @@ public class TableDatabase extends ArrayList<RowTable> implements ExecutionTree 
 	public <T> T accept(ParsingVisitor<T> visitor) {
 		return visitor.visit(this);
 	}
+    
     public String getColumnsType(String nameCol) { return infoDatatype.get(nameCol); }
     public String getKeyName() { return primaryKey; }
     public String getName() { return tableName; }

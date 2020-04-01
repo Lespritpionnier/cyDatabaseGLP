@@ -10,8 +10,8 @@ public class KeyPrimary implements ItemRow {
         data=value;
     }
 
-    public Long getData() {
-        return data;
+    public String getData() {
+        return data.toString();
     }
     
     public String toString() {

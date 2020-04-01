@@ -1,4 +1,4 @@
-package mainStructures.textCommands;
+package mainStructures.textCommands.nodesPart;
 
 import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
 

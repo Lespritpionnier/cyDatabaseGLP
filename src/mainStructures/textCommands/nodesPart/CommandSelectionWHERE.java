@@ -32,7 +32,7 @@ public class CommandSelectionWHERE extends CommandArchetypeNode {
     }
 
     @Override
-    public <T> T accept(ParsingVisitor<T> visitor) {
-        return null;
-    }
+	public <T> T accept(ParsingVisitor<T> visitor) {
+		return visitor.visit(this);
+	}
 }
