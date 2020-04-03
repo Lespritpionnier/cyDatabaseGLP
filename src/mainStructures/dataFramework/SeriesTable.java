@@ -1,15 +1,17 @@
 package mainStructures.dataFramework;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
-public class SeriesTable {
-    /**
-     * This class is only use for DATA WASHING (For Columns)
-     * Like OrderBy or Distinct or Projection
-     */
-    private String targetColumnName;
-  //  private String washingTerm;
-    private ArrayList<ItemRow> targets = new ArrayList<>();
-  //  private ArrayList<Integer> markedRows = new ArrayList<>();
+public class SeriesTable extends ArrayList<RowTable> {
+	
+	private String fromTable;
+	private LinkedHashMap<String,String> infoDatatype;
+
+	public SeriesTable(LinkedHashMap<String, String> infoDatatype, String tableName) {
+		super();
+		this.infoDatatype = infoDatatype;
+		fromTable = tableName;
+	}
 
 }

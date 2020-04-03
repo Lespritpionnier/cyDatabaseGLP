@@ -9,15 +9,6 @@ public abstract class CommandArchetypeNode implements ExecutionTree{
         right = null;
     }
 
-    public CommandArchetypeNode(ExecutionTree left, ExecutionTree right) {
-        this.left = left;
-        this.right = right;
-    }
-    public CommandArchetypeNode(ExecutionTree only) {
-        left = only;
-        right = null;
-    }
-
     public void setLeft(ExecutionTree left) {
         this.left = left;
     }

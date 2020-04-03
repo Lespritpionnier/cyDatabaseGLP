@@ -34,4 +34,9 @@ public class KeyPrimary implements ItemRow {
     }
 
  */
+
+	@Override
+	public int compareTo(String s) {
+		return data.toString().compareTo(s);
+	}
 }

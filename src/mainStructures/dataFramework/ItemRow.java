@@ -5,6 +5,7 @@ import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 public interface ItemRow {
 
 	String getData();
+	int compareTo(String s);
 
 
 

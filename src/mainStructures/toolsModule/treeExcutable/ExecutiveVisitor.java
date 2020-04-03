@@ -5,17 +5,21 @@ import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 import mainStructures.toolsModule.dealDatagram.JoinComparator;
+import mainStructures.toolsModule.dealDatagram.SelectProjecteur;
+import mainStructures.toolsModule.dealDatagram.WhereFilter;
 
 public class ExecutiveVisitor implements ParsingVisitor<TableDatabase>{
 
 	@Override
 	public TableDatabase visit(CommandProjectionSELECT node) {
-		return node.getRight().accept(this);
+		TableDatabase tab = node.getRight().accept(this);
+		return SelectProjecteur.goWork(node.getDataWanted(), tab);
 	}
 
 	@Override
 	public TableDatabase visit(CommandSelectionWHERE node) {
-		return node.getRight().accept(this);
+		TableDatabase tab = node.getRight().accept(this);
+		return WhereFilter.goWork(node.getPreConditions(), tab);
 	}
 
 	@Override

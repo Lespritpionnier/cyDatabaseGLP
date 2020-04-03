@@ -2,6 +2,9 @@ package faceGraphical.userInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,10 +12,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
+import mainStructures.dataFramework.TableDatabase;
+import mainStructures.saveStockpile.CyDatabase;
+import mainStructures.toolsModule.makeAnalysis.SyntaxHandling;
+
 
 public class Fenetre extends JFrame {
 private JTable tableau;
-private JButton valid = new JButton("Valid");
+private JButton btnValid = new JButton("Valid");
+
+
+
 private JButton save = new JButton("save");
 private JButton importer = new JButton("importer");
 
@@ -25,40 +35,25 @@ public Fenetre(){
   this.setTitle("JTable");
   this.setSize(800, 500);
   
-  Object[][] data = {
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."},  
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."},  
-		  {"...", "...", "...","...", "...","...", "..."},  
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."}, 
-		  {"...", "...", "...","...", "...","...", "..."},  
-		  {"...", "...", "...","...", "...","...", "..."}
-		  
-  };
+  CyDatabase myDB = new CyDatabase();
+  	
 
-	  String  title[] = {"nom", "Nom", "nom", "nom","nom", "Nom", "nom"};
-	  ZModel model = new ZModel(data, title);
-	  
-	  this.tableau = new JTable(model);
 	  JPanel pan = new JPanel();
 	
 	  
 	  pan.add(save);
 	  pan.add(importer);
-	  pan.add(valid);
+	  pan.add(btnValid);
 	  pan.add(new JScrollPane(textArea));
 	  textArea.setColumns(30);
 	  textArea.setPreferredSize( new Dimension( 500, 100 ) );
 	  
-	  System.out.println("Nombre de colonne : " + model.getColumnCount());
-	  System.out.println("Nombre de ligne : " + model.getRowCount());
+	  tableau = new JTable();
+	  tableau.setDefaultRenderer(JButton.class, new TableComponent());
+	  tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//	  System.out.println("Nombre de colonne : " + model.getColumnCount());
+//	  System.out.println("Nombre de ligne : " + model.getRowCount());
 	  
-	  this.tableau.setDefaultRenderer(JButton.class, new TableComponent());
 	  this.getContentPane().add(pan, BorderLayout.SOUTH);
 	  
 	  JButton ajouter = new JButton("Ajouter une ligne");
@@ -67,9 +62,27 @@ public Fenetre(){
 	  ///affiche le tableau au centre
 	  this.getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 	  //affiche le scroll horizontal
-	  tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
 	  this.setVisible(true);
 
+	  
+	  class ValidAction implements ActionListener {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  String requis = textArea.getText();
+			  SyntaxHandling synSQL = new SyntaxHandling(myDB.getMyTables(),requis);
+			  TableDatabase pre = synSQL.makeNodes();
+			  
+		  	  String[][] data = pre.toTable();
+			  String title[] = pre.getTitle();
+			  ZModel model = new ZModel(data, title);
+			  tableau.setModel(model);
+			  
+		  }
+		  
+	  }
+	  btnValid.addActionListener(new ValidAction());
+	  
 	}
 }
 

@@ -11,10 +11,15 @@ import java.util.LinkedHashMap;
 
 
 public class TableDatabase extends ArrayList<RowTable> implements ExecutionTree {
- //   private KeyPrimary keyCurrent;
+		private String[] title;
+		public String[] getTitle() {return title;}
+		public void setTitle(String[] title) {//System.out.println(title[2]);
+			this.title = title;}
+
+	//   private KeyPrimary keyCurrent;
     private String tableName;
     private LinkedHashMap<String,String> infoDatatype;
-    private String primaryKey;
+    private String primaryKey; 
     private HashMap<String,String> foreignKeys;
     private int nextKey; //MAYBE RELATE TO SIZE()
     //private ArrayList<Integer> indexRanked = new ArrayList<>()
@@ -33,11 +38,23 @@ public class TableDatabase extends ArrayList<RowTable> implements ExecutionTree 
 		}
     }
 
-
+    public String[][] toTable (){
+    	String[][] jtable= new String[this.size()][title.length];
+    	System.out.println(this.size()+" and "+title.length);
+    	for(int i=0; i<this.size(); i++) {
+    		for(int j = 0; j<title.length; j++) {
+    			jtable[i][j]= this.get(i).get(title[j]).getData();
+    			System.out.println(this.get(i).get(title[j]).getData());
+    		}
+    	}
+		return jtable;
+    }
 
     //Think about REMOVE()
 
-
+    public SeriesTable toVirtual () {
+    	return new SeriesTable(infoDatatype,tableName);
+    }
 
     @Override
     public boolean add(RowTable row_table) {

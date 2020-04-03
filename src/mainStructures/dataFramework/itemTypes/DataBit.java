@@ -4,7 +4,12 @@ import mainStructures.toolsModule.makeAnalysis.comdAutomate.BoxSELECT;
 
 public class DataBit implements ItemRow {
     private Boolean data;
-
+    
+	@Override
+	public int compareTo(String s) {
+		return data.toString().compareTo(s);
+	}
+	
     public DataBit(String value) {
         SetValue(value);
     }

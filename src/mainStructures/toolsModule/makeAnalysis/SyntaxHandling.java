@@ -27,6 +27,8 @@ public class SyntaxHandling {
     String request;
     ArrayList<ExecutionTree> nodes = new ArrayList<>();
 
+    
+    StringTokenizer handling;
 
     public ArrayList<ExecutionTree> getNodes() {
         return nodes;
@@ -38,12 +40,12 @@ public class SyntaxHandling {
         String convertS = convertSyntax(request);
 //System.out.println(convertS);
         StringTokenizer handling = new StringTokenizer(convertS);
-        makeNodes(handling);
+        this.handling=handling;
     }
 
 
     //This method needs to be improved a bit
-    private void makeNodes(StringTokenizer handling) {
+    public TableDatabase makeNodes() {
         String temp;
         if (handling.hasMoreTokens()){
             temp = handling.nextToken();
@@ -54,11 +56,14 @@ public class SyntaxHandling {
                 while (handling.hasMoreTokens()){
                     temp = handling.nextToken();
                     if (temp.equals("FROM")){break;}
+                	if(temp.contains(".")) {
+	                	temp = temp.substring(temp.indexOf(".")+1, temp.length());
+                	}
                     selectInfo.add(temp);
                 }
                 BoxSELECT boxSelect = new BoxSELECT(selectInfo);
                 nodes.add(boxSelect.makeNode());
-//System.out.println(selectInfo);
+//System.out.println("afsfasfsaf"+selectInfo);
      //       }
             
             
@@ -83,8 +88,7 @@ public class SyntaxHandling {
                 temp = handling.nextToken();
                 if(temp.equals("ON")){
                 	temp = handling.nextToken();
-                	int knife = temp.indexOf(".")+1;
-                	temp = temp.substring(knife, temp.length());
+                	temp = temp.substring(temp.indexOf(".")+1, temp.length());
 //System.out.println("VOICI CONDITION ON "+temp);
                     boxJoin.addChoiceON(temp);
                     temp = handling.nextToken();
@@ -116,7 +120,10 @@ public class SyntaxHandling {
 System.out.println(root.getFormulaRA());
 			ExecutiveVisitor sucess = new ExecutiveVisitor();
 			TableDatabase resultT = root.accept(sucess);
-System.out.println("WE ARE THE CHAMPI "+resultT);
+//System.out.println("WE ARE THE CHAMPI "+resultT);
+//	String[][] testT = resultT.toTable();
+//System.out.println(testT.toString());
+			return resultT;
             }
 
 
@@ -162,8 +169,12 @@ System.out.println("WE ARE THE CHAMPI "+resultT);
                 	
                     infoDatatype.put(keyHT.get(index) , valueHT.get(index));
                 }
-System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
+//System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
                 TableDatabase yeahTable = new TableDatabase(nameNewTable,infoDatatype);
+                
+	                String [] title = new String[keyHT.size()];
+	                keyHT.toArray(title);
+	                yeahTable.setTitle(title);
 
                     while (!temp.equals("FOREIGN") && handling.hasMoreTokens()){ temp = handling.nextToken(); }
                         if(temp.equals("FOREIGN")){
@@ -184,6 +195,7 @@ System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
 //System.out.println(foreignKeys);
                         }
                 myTables.put(nameNewTable,yeahTable);
+                return yeahTable;
             }
 
 
@@ -215,8 +227,10 @@ System.out.println(keyHT +" " + valueHT+"????????????"+infoDatatype);
 
                     }
                 myTables.get(nameToTable).add(welcome);
+                return myTables.get(nameToTable);
             }
         }
+		return null;
     }
 
     private ItemRow makeItem(String columnsType, String value) {

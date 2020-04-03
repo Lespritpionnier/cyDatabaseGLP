@@ -5,26 +5,30 @@ import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
 import java.util.ArrayList;
 
 public class CommandSelectionWHERE extends CommandArchetypeNode {
-    private ArrayList<Integer> markedRows_Indexes;
-    private ArrayList<String> justForPre =new ArrayList<>();
+    private ArrayList<String> preConditions =new ArrayList<>();
 
     public CommandSelectionWHERE(ArrayList<String> predicateConditions) {
         super();
-        //loop to add predicateConditions
-        justForPre = predicateConditions;
+        preConditions = predicateConditions;
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 //    public String toString() {
 //        return "\n VOICI WHERE!{Conditions:" + justForPre + '}' + "\n";
 //    }
     
-    public CommandSelectionWHERE() {
+    public ArrayList<String> getPreConditions() {
+		return preConditions;
 	}
-
-//	public void addCondition (String condition){
-//        ResultPredicateCondition pC = new ResultPredicateCondition(condition);
-//        predicateConditions.add(pC);
-//    }
 
     @Override
     public String getFormulaRA() {

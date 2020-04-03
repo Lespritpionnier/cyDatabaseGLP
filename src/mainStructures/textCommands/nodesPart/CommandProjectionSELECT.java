@@ -6,31 +6,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CommandProjectionSELECT extends CommandArchetypeNode {
-    private ArrayList<String> wanted = new ArrayList<>();
+    private ArrayList<String> dataWanted = new ArrayList<>();
     private HashMap<String,String> alias = new HashMap<>();
     private String[] orderBY = new String[2]; //Name of the column + ASC/DSC
     private boolean ifDISTINCT = false;
 
-
-
-
-
-
-
-
+ 
 
 
 
     //  I don't remember why I wrote those things:
 
-    public CommandProjectionSELECT(ArrayList<String> dataWanted) {
+
+	public ArrayList<String> getDataWanted() {
+		return dataWanted;
+	}
+
+
+	public CommandProjectionSELECT(ArrayList<String> dataWanted) {
         super();
- //       this.dataWanted = dataWanted;
+        this.dataWanted = dataWanted;
     }
 
-    public CommandProjectionSELECT() {
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
      * Those METHODS below are made before, maybe WRONG or MOUCHE

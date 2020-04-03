@@ -8,11 +8,11 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class ZModel extends AbstractTableModel{
-	  private Object[][] data;
+	  private String[][] data;
 	  private String[] title;
 
 	  //Constructeur
-	  public ZModel(Object[][] data, String[] title){
+	  public ZModel(String[][] data, String[] title){
 	    this.data = data;
 	    this.title = title;
 	  }

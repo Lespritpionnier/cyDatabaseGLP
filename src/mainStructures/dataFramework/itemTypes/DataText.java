@@ -21,4 +21,11 @@ public class DataText implements ItemRow {
     public String toString() {
         return "DataText{" + '\'' + data + '\'' + '}';
     }
+
+	@Override
+	public int compareTo(String s) {
+		return data.compareTo(s);
+	}
+
+
 }
