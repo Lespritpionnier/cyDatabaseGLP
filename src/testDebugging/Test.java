@@ -1,15 +1,7 @@
-package mainStructures.toolsModule;
+package testDebugging;
 
-import java.util.ArrayList;
-
-import mainStructures.dataFramework.TableDatabase;
-import mainStructures.saveStockpile.CyDatabase;
-import mainStructures.textCommands.nodesPart.CommandJointJOIN;
-import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
-import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
-import mainStructures.textCommands.nodesPart.ExecutionTree;
-import mainStructures.toolsModule.makeAnalysis.SyntaxHandling;
-import mainStructures.toolsModule.treeExcutable.OldTreeBuilder;
+import mainStructures.unitStockpile.CyDatabase;
+import mainStructures.toolsModule.textAnalysis.SyntaxHandling;
 
 public class Test {
 	public static void main(String[] args){

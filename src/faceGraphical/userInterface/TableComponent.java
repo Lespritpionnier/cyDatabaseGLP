@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-//CTRL + SHIFT + O pour générer les imports
+//CTRL + SHIFT + O pour generer les imports
 public class TableComponent extends DefaultTableCellRenderer {
 
 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {

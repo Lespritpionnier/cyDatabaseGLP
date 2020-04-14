@@ -1,9 +1,6 @@
-package mainStructures.textCommands.nodesPart;
+package mainStructures.nodeCommand;
 
-import mainStructures.dataFramework.itemTypes.KeyForeign;
 import mainStructures.toolsModule.treeExcutable.ParsingVisitor;
-
-import java.util.ArrayList;
 
 public class CommandJointJOIN extends CommandArchetypeNode {
     String condition;

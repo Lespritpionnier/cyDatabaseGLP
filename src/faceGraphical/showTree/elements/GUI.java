@@ -1,3 +1,4 @@
+/*
 package faceGraphical.showTree.elements;
 
 import java.util.ArrayList;
@@ -9,23 +10,15 @@ import mainStructures.textCommands.nodesPart.CommandJointJOIN;
 import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
 import mainStructures.textCommands.nodesPart.CommandSelectionWHERE;
 import mainStructures.textCommands.nodesPart.ExecutionTree;
-import mainStructures.toolsModule.treeExcutable.OldTreeBuilder;
 
 
 
 public class GUI extends JFrame {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private TreePanel treePanel;
 
-	/**
-	 * To create a graphical tree frame, we need to specify the input tree text file.
-	 * 
-	 * @param input the name of input file with its path
-	 */
+
 	public GUI(ArrayList<ExecutionTree> input) {
 		super("Graphical Tree Demo");
 
@@ -62,12 +55,13 @@ public class GUI extends JFrame {
 		OldTreeBuilder tree=new OldTreeBuilder();
 		list.add(proj);
 		list.add(sel);
-		list.add(tab1);
+		//list.add(tab1);
 		list.add(join1);
-		list.add(tab2);
+		//list.add(tab2);
 		
 		System.out.println(tree.relationnel(list));
 		tree.buildTree1(list);
 		new GUI(list);
 	}
 }
+*/

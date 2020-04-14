@@ -1,8 +1,8 @@
 package mainStructures.dataFramework;
 
-import mainStructures.textCommands.nodesPart.CommandProjectionSELECT;
+import java.io.Serializable;
 
-public interface ItemRow {
+public interface ItemRow extends Serializable {
 
 	String getData();
 	int compareTo(String s);

@@ -1,4 +1,6 @@
+/*
 package faceGraphical.showTree.elements;
+
 
 import java.awt.Graphics;
 
@@ -43,3 +45,4 @@ public class DisplayVisitor implements ParsingVisitor<Void> {
 	
 
 }
+ */
