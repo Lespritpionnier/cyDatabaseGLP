@@ -20,10 +20,10 @@ public class WhereFilter {
 			String who = iterator.next();
 				int knife = who.indexOf(".")+1;
 				who = who.substring(knife, who.length());
-System.out.println("WHO "+ who);
+//System.out.println("WHO "+ who);
 			String how = iterator.next();
 			String when = iterator.next();
-System.out.println(when+"Wowen "+ how);
+//System.out.println(when+"Wowen "+ how);
 	        switch (how){
 	            case ">": {
 	            	Iterator<RowTable> iter = tab.iterator();

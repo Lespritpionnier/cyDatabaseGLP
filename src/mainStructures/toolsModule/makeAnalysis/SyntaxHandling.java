@@ -206,7 +206,7 @@ System.out.println(root.getFormulaRA());
                 String nameToTable = handling.nextToken();
                 temp = handling.nextToken();
                 ArrayList<String> toNameCol = new ArrayList<String>();
-  //      		System.out.println(temp);
+//System.out.println(temp);
                     while (!temp.equals("VALUES")){toNameCol.add(temp); temp = handling.nextToken();}
                 ArrayList<String> newDataCol = new ArrayList<>();
                     while (handling.hasMoreTokens()){temp = handling.nextToken(); newDataCol.add(temp); }
