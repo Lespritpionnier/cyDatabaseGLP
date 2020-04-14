@@ -1,3 +1,4 @@
+/*
 package faceGraphical.showTree.elements;
 
 import java.awt.Color;
@@ -15,9 +16,7 @@ public class TreePanel  extends JPanel {
 	private ExecutionTree tree;
 	private int treeHeight;
 
-	/**
-	 * Showing the grid will make the debug easier.
-	 */
+
 	private boolean debugGrid = false;
 
 	public TreePanel(ExecutionTree tree) {
@@ -61,3 +60,4 @@ public class TreePanel  extends JPanel {
 		}
 	}
 }
+ */

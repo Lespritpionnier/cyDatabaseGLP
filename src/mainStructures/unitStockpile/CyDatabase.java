@@ -1,4 +1,4 @@
-package mainStructures.saveStockpile;
+package mainStructures.unitStockpile;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -23,18 +23,17 @@ public class CyDatabase implements Serializable {
 
 
 
-	private HashMap<String, TableDatabase> myTables = new HashMap<String, TableDatabase>();
+	private HashMap<String, TableDatabase> myTables = new HashMap<>();
 
     public void addTable (TableDatabase newTable) {
         myTables.put(newTable.getName(),newTable);
     }
+
     public TableDatabase getTable(String tableName){
         return myTables.get(tableName);
     }
 
-	public HashMap<String, TableDatabase> getMyTables() {
-		return myTables;
-	}
+	public HashMap<String, TableDatabase> getMyTables() { return myTables; }
 
 	public void serializationSave(String fileName) {
 		ObjectOutputStream stream;
